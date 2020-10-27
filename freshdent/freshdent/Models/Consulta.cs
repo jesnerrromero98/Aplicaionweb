@@ -19,5 +19,7 @@ namespace freshdent.Models
         //realizar la consulta en sql correctamente y configurar la capa de datos
         public string NombreMedico { get; set; }
         public string Nombres { get; set; }
+
+        public string Error { get; set; }
     }
 }

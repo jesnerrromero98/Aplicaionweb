@@ -18,5 +18,7 @@ namespace freshdent.Models
         public int Telefono_Celular { get; set; }
         public string Municipio { get; set; }
         public string Departamento { get; set; }
+
+        public string Error { get; set; }
     }
 }

@@ -13,5 +13,7 @@ namespace freshdent.Models
         public string Presentacion { get; set; }
         public int Cantidad { get; set; }
         public string Descripcion { get; set; }
+
+        public string Error { get; set; }
     }
 }
