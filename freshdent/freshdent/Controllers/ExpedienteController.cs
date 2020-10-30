@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using freshdent.Iservicies;
+using freshdent.Iservices;
 using freshdent.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,42 +13,45 @@ namespace freshdent.Controllers
     [ApiController]
     public class ExpedienteController : ControllerBase
     {
-        private IExpedienteServicie _oExpedienteService;
-        public ExpedienteController(IExpedienteServicie oExpedienteServicie)
+        private IExpedienteService _oExpedienteService;
+        public ExpedienteController(IExpedienteService oExpedienteService)
         {
-            _oExpedienteService = oExpedienteServicie;
+            _oExpedienteService = oExpedienteService;
         }
-        // GET: api/<EmpleadosController>
+
+        //GET: api/<ExpedienteController>
         [HttpGet]
         public IEnumerable<Expediente> Get()
         {
             return _oExpedienteService.Gets();
         }
-        // GET api/<EmpleadosController>/5
-        [HttpGet("{id}", Name = "Get")]
+
+        //GET: api/<ExpedienteController>/5
+        [HttpGet("{@id}", Name = "Get")]
         public Expediente Get(int id)
         {
             return _oExpedienteService.Get(id);
         }
-        // POST api/<EmpleadosController>
 
+        //POST: api/<ExpedienteController>
         [HttpPost]
-        public void Post([FromBody] Expediente oEmpleado)
+        public void Post([FromBody] Expediente oExpediente)
         {
-            if (ModelState.IsValid) _oExpedienteService.Add(oEmpleado);
+            if (ModelState.IsValid) _oExpedienteService.Add(oExpediente);
         }
-        // PUT api/<EmpleadosController>/5
+
+        //PUT: api/<ExpedienteController>/5
         [HttpPut]
-        public void Put([FromBody] Expediente oExpediente)
+        public void Put([FromBody]Expediente oExpediente)
         {
-            if (ModelState.IsValid) _oExpedienteService.update(oExpediente);
+            if (ModelState.IsValid) _oExpedienteService.Update(oExpediente);
         }
-        // DELETE api/<EmpleadosController>/5
+
+        //DELETE: api/<ExpedienteController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             if (id != 0) _oExpedienteService.Delete(id);
         }
     }
-
 }

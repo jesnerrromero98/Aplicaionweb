@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using freshdent.Conexion;
-using freshdent.Iservicies;
-using freshdent.Service;
+using freshdent.Iservices;
+using freshdent.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,15 +34,15 @@ namespace freshdent
 
             services.AddSingleton<IConfiguration>(Configuration);
             Global.ConnectionString = Configuration.GetConnectionString("FRESHDENT");
-
-            services.AddScoped<IConsultaService, ConsultaService>();
-            services.AddScoped<IMedicoSevice, MedicoService>();
-            services.AddScoped<IRecetaService, RecetaMedicaService>();
-            services.AddScoped<IExpedienteServicie, ExpedienteService>();
+            
+            services.AddScoped<IExpedienteService>();//Al realizar la llamada de ExpedienteService me indica error porque la accion define que devuelve un mismo valor.
+            services.AddScoped<IConsultaService>();//Al realizar la llamada de ConsultaService me indica error porque la accion define que devuelve un mismo valor.
+            services.AddScoped<IMedicoService>();//Al realizar la llamada de MedicoService me indica error porque la accion define que devuelve un mismo valor.
+            services.AddScoped<IRecetaService>();//Al realizar la llamada de RecetaService me indica error porque la accion define que devuelve un mismo valor.
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MyServices", Version = "v1" });
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Myservices", Version = "v1" });
             });
         }
 

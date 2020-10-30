@@ -1,19 +1,22 @@
-﻿using freshdent.Iservicies;
+﻿using Dapper;
+using freshdent.Conexion;
+using freshdent.Iservices;
+using freshdent.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using freshdent.Models;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Data;
-using freshdent.Conexion;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace freshdent.Service
+namespace freshdent.Services
 {
-    public class ExpedienteService: IExpedienteServicie
+    public class ExpedienteService
     {
         Expediente _oExpediente = new Expediente();
         List<Expediente> _oExpedientes = new List<Expediente>();
+
         public Expediente Add(Expediente oExpediente)
         {
             _oExpediente = new Expediente();
@@ -24,8 +27,8 @@ namespace freshdent.Service
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oEmpleados = con.Query<Expediente>("InsertExpediente", this.setParameters(oExpediente),
-                        commandType: CommandType.StoredProcedure);
+                        var oExpediente = con.Query<Expediente>("InsertExpediente", this.setParameters(oExpediente),
+                            commandType: CommandType.StoredProcedure);
                     }
                 }
             }
@@ -35,7 +38,8 @@ namespace freshdent.Service
             }
             return _oExpediente;
         }
-        public string Delete(int ExpedienteId)
+        
+        public string Delete (int ExpedienteId)
         {
             try
             {
@@ -45,7 +49,7 @@ namespace freshdent.Service
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@Id", ExpedienteId);
+                        param.Add("@IdExpediente", ExpedienteId);
                         con.Query("DeleteExpediente", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
@@ -63,14 +67,16 @@ namespace freshdent.Service
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
                 {
-                    if (con.State == ConnectionState.Closed) con.Open();
-                    var param = new DynamicParameters();
-                    param.Add("@Id", ExpedienteId);
-                    var oExpediente = con.Query<Expediente>("SelectExpediente", param, commandType:
-                    CommandType.StoredProcedure).ToList();
-                    if (oExpediente != null && oExpediente.Count() > 0)
+                    if (con.State == ConnectionState.Closed)
                     {
-                        _oExpediente = oExpediente.SingleOrDefault();
+                        con.Open();
+                        var param = new DynamicParameters();
+                        param.Add("@IdExpediente", ExpedienteId);
+                        var oExpediente = con.Query<Expediente>("SelectExpediente", param, commandType: CommandType.StoredProcedure).ToList();
+                        if (oExpediente != null && oExpediente.Count()>0)
+                        {
+                            _oExpediente = oExpediente.SingleOrDefault();
+                        }
                     }
                 }
             }
@@ -80,19 +86,21 @@ namespace freshdent.Service
             }
             return _oExpediente;
         }
-        public List<Expediente> Gets()
+        public List <Expediente> Gets()
         {
             _oExpedientes = new List<Expediente>();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
                 {
-                    if (con.State == ConnectionState.Closed) con.Open();
-                    var oExpedientes = con.Query<Expediente>("SelectExpedienteAll", commandType:
-                    CommandType.StoredProcedure).ToList();
-                    if (oExpedientes != null && oExpedientes.Count() > 0)
+                    if (con.State == ConnectionState.Closed)
                     {
-                        _oExpedientes = oExpedientes;
+                        con.Open();
+                        var oExpedientes = con.Query<Expediente>("SelectExpedienteAll", commandType: CommandType.StoredProcedure).ToList();
+                        if (oExpedientes != null && oExpedientes.Count()>0)
+                        {
+                            _oExpedientes = oExpedientes;
+                        }
                     }
                 }
             }
@@ -104,7 +112,6 @@ namespace freshdent.Service
         }
         public Expediente Update(Expediente oExpediente)
         {
-            _oExpediente = new Expediente();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -112,8 +119,8 @@ namespace freshdent.Service
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oEmpleados = con.Query<Expediente>("UpdateExpediente", this.setParameters(oExpediente),
-                        commandType: CommandType.StoredProcedure);
+                        var oExpedientes = con.Query<Expediente>("UpdateExpediente", this.setParameters(oExpediente),
+                            commandType: CommandType.StoredProcedure);
                     }
                 }
             }
@@ -123,10 +130,10 @@ namespace freshdent.Service
             }
             return _oExpediente;
         }
-        private DynamicParameters setParameters(Expediente oExpediente)
+        private DynamicParameters setParameters (Expediente oExpediente)
         {
             DynamicParameters parameters = new DynamicParameters();
-            if (oExpediente.IdExpediente != 0) parameters.Add("@Id", oExpediente.IdExpediente);
+            if (oExpediente.IdExpediente != 0) parameters.Add("@IdExpediente", oExpediente.IdExpediente);
             parameters.Add("@Cedula", oExpediente.Cedula);
             parameters.Add("@Nombres", oExpediente.Nombres);
             parameters.Add("@Apellidos", oExpediente.Apellidos);
@@ -138,4 +145,3 @@ namespace freshdent.Service
         }
     }
 }
-        

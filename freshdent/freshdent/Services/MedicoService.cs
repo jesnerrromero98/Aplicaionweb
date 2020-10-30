@@ -1,17 +1,22 @@
-﻿using freshdent.Conexion;
-using freshdent.Iservicies;
+﻿using Dapper;
+using freshdent.Conexion;
+using freshdent.Iservices;
 using freshdent.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace freshdent.Service
+namespace freshdent.Services
 {
-    public class MedicoService:IMedicoSevice
+    public class MedicoService
     {
         Medico _oMedico = new Medico();
         List<Medico> _oMedicos = new List<Medico>();
+
         public Medico Add(Medico oMedico)
         {
             _oMedico = new Medico();
@@ -22,8 +27,8 @@ namespace freshdent.Service
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oEmpleados = con.Query<Medico>("InsertMedico", this.setParameters(oMedico),
-                        commandType: CommandType.StoredProcedure);
+                        var oExpediente = con.Query<Medico>("InsertMedico", this.setParameters(oMedico),
+                            commandType: CommandType.StoredProcedure);
                     }
                 }
             }
@@ -33,6 +38,7 @@ namespace freshdent.Service
             }
             return _oMedico;
         }
+
         public string Delete(int MedicoId)
         {
             try
@@ -43,7 +49,7 @@ namespace freshdent.Service
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@Id", MedicoId);
+                        param.Add("@IdMedico", MedicoId);
                         con.Query("DeleteMedico", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
@@ -61,14 +67,16 @@ namespace freshdent.Service
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
                 {
-                    if (con.State == ConnectionState.Closed) con.Open();
-                    var param = new DynamicParameters();
-                    param.Add("@Id", MedicoId);
-                    var oMedico = con.Query<Medico>("SelectMedico", param, commandType:
-                    CommandType.StoredProcedure).ToList();
-                    if (oMedico != null && oMedico.Count() > 0)
+                    if (con.State == ConnectionState.Closed)
                     {
-                        _oMedico = oMedico.SingleOrDefault();
+                        con.Open();
+                        var param = new DynamicParameters();
+                        param.Add("@IdMedico", MedicoId);
+                        var oMedico = con.Query<Medico>("SelectMedico", param, commandType: CommandType.StoredProcedure).ToList();
+                        if (oMedico != null && oMedico.Count() > 0)
+                        {
+                            _oMedico = oMedico.SingleOrDefault();
+                        }
                     }
                 }
             }
@@ -85,12 +93,14 @@ namespace freshdent.Service
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
                 {
-                    if (con.State == ConnectionState.Closed) con.Open();
-                    var oExpedientes = con.Query<Medico>("SelectMedicoAll", commandType:
-                    CommandType.StoredProcedure).ToList();
-                    if (oMedicos != null && oMedicos.Count() > 0)
+                    if (con.State == ConnectionState.Closed)
                     {
-                        _oMedicos = oMedicos;
+                        con.Open();
+                        var oMedicos = con.Query<Medico>("SelectMedicoAll", commandType: CommandType.StoredProcedure).ToList();
+                        if (oMedicos != null && oMedicos.Count() > 0)
+                        {
+                            _oMedicos = oMedicos;
+                        }
                     }
                 }
             }
@@ -98,11 +108,10 @@ namespace freshdent.Service
             {
                 _oMedico.Error = ex.Message;
             }
-            return _oMedico;
+            return _oMedicos;
         }
         public Medico Update(Medico oMedico)
         {
-            _oMedico = new Medico();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -110,8 +119,8 @@ namespace freshdent.Service
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oMedicos = con.Query<Medico>("UpdateMedico", this.setParameters(oMedico),
-                        commandType: CommandType.StoredProcedure);
+                        var oMedicos = con.Query<Medico>("UpdateMedico", this.setParameters(oExpediente),
+                            commandType: CommandType.StoredProcedure);
                     }
                 }
             }
@@ -124,7 +133,7 @@ namespace freshdent.Service
         private DynamicParameters setParameters(Medico oMedico)
         {
             DynamicParameters parameters = new DynamicParameters();
-            if (oMedico.IdMedico != 0) parameters.Add("@Id", oMedico.IdMedico);
+            if (oMedico.IdMedico != 0) parameters.Add("@IdMedico", oMedico.IdMedico);
             parameters.Add("@NombreMedico", oMedico.NombreMedico);
             parameters.Add("@Telefono_Celular", oMedico.Telefono_Celular);
             return parameters;

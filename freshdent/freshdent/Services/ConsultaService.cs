@@ -1,18 +1,24 @@
-﻿using freshdent.Conexion;
-using freshdent.Iservicies;
+﻿using Dapper;
+using freshdent.Conexion;
+using freshdent.Iservices;
 using freshdent.Models;
+using freshdent.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace freshdent.Service
+namespace freshdent.Services
 {
-    public class ConsultaService : IConsultaService
+    public class ConsultaService
     {
         Consulta _oConsulta = new Consulta();
         List<Consulta> _oConsultas = new List<Consulta>();
-        public Medico Add(Consulta oConsulta)
+
+        public Consulta Add(Consulta oConsulta)
         {
             _oConsulta = new Consulta();
             try
@@ -22,8 +28,8 @@ namespace freshdent.Service
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("InsertConsulta", this.setParameters(oConsulta),
-                        commandType: CommandType.StoredProcedure);
+                        var oConsulta = con.Query<Consulta>("InsertConsulta", this.setParameters(oExpediente),
+                            commandType: CommandType.StoredProcedure);
                     }
                 }
             }
@@ -33,6 +39,7 @@ namespace freshdent.Service
             }
             return _oConsulta;
         }
+
         public string Delete(int ConsultaId)
         {
             try
@@ -43,7 +50,7 @@ namespace freshdent.Service
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@Id", ConsultaId);
+                        param.Add("@IdConsulta", ConsultaId);
                         con.Query("DeleteConsulta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
@@ -54,21 +61,23 @@ namespace freshdent.Service
             }
             return _oConsulta.Error;
         }
-        public Medico Get(int ConsultaId)
+        public Consulta Get(int ConsultaId)
         {
             _oConsulta = new Consulta();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
                 {
-                    if (con.State == ConnectionState.Closed) con.Open();
-                    var param = new DynamicParameters();
-                    param.Add("@Id", ConsultaId);
-                    var oConsulta = con.Query<Consulta>("SelectConsulta", param, commandType:
-                    CommandType.StoredProcedure).ToList();
-                    if (oConsulta != null && oConsulta.Count() > 0)
+                    if (con.State == ConnectionState.Closed)
                     {
-                        _oConsulta = oConsulta.SingleOrDefault();
+                        con.Open();
+                        var param = new DynamicParameters();
+                        param.Add("@IdConsulta", ConsultaId);
+                        var oConsulta = con.Query<Expediente>("SelectConsulta", param, commandType: CommandType.StoredProcedure).ToList();
+                        if (oConsulta != null && oConsulta.Count() > 0)
+                        {
+                            _oConsulta = oConsulta.SingleOrDefault();
+                        }
                     }
                 }
             }
@@ -85,12 +94,14 @@ namespace freshdent.Service
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
                 {
-                    if (con.State == ConnectionState.Closed) con.Open();
-                    var oConsultas = con.Query<Consulta>("SelectConsultaAll", commandType:
-                    CommandType.StoredProcedure).ToList();
-                    if (oConsultas != null && oConsultas.Count() > 0)
+                    if (con.State == ConnectionState.Closed)
                     {
-                        _oConsultas = oConsultas;
+                        con.Open();
+                        var oConsultas = con.Query<Consulta>("SelectConsultaAll", commandType: CommandType.StoredProcedure).ToList();
+                        if (oConsultas != null && oConsultas.Count() > 0)
+                        {
+                            _oConsultas = oConsultas;
+                        }
                     }
                 }
             }
@@ -98,11 +109,10 @@ namespace freshdent.Service
             {
                 _oConsulta.Error = ex.Message;
             }
-            return _oConsulta;
+            return _oConsultas;
         }
-        public Medico Update(Consulta oConsulta)
+        public Consulta Update(Consulta oConsulta)
         {
-            _oConsulta = new Consulta();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -110,8 +120,8 @@ namespace freshdent.Service
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("UpdateConsulta", this.setParameters(oConsulta),
-                        commandType: CommandType.StoredProcedure);
+                        var oExpedientes = con.Query<Consulta>("UpdateConsulta", this.setParameters(oExpediente),
+                            commandType: CommandType.StoredProcedure);
                     }
                 }
             }
@@ -124,7 +134,7 @@ namespace freshdent.Service
         private DynamicParameters setParameters(Consulta oConsulta)
         {
             DynamicParameters parameters = new DynamicParameters();
-            if (oConsulta.IdConsulta != 0) parameters.Add("@Id", oConsulta.IdConsulta);
+            if (oConsulta.IdConsulta != 0) parameters.Add("@IdConsulta", oConsulta.IdConsulta);
             parameters.Add("@Fecha", oConsulta.Fecha);
             parameters.Add("@Hora", oConsulta.Hora);
             parameters.Add("@Sintoma", oConsulta.Sintoma);

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Elkin Maltez\\Downloads\\Aplicaionweb-master\\Aplicaionweb-master\\freshdent\\freshdent\\freshdent.csproj": {}
+    "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Proyecto Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Elkin Maltez\\Downloads\\Aplicaionweb-master\\Aplicaionweb-master\\freshdent\\freshdent\\freshdent.csproj": {
+    "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Proyecto Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Elkin Maltez\\Downloads\\Aplicaionweb-master\\Aplicaionweb-master\\freshdent\\freshdent\\freshdent.csproj",
+        "projectUniqueName": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Proyecto Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
         "projectName": "freshdent",
-        "projectPath": "C:\\Users\\Elkin Maltez\\Downloads\\Aplicaionweb-master\\Aplicaionweb-master\\freshdent\\freshdent\\freshdent.csproj",
+        "projectPath": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Proyecto Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
         "packagesPath": "C:\\Users\\Elkin Maltez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Elkin Maltez\\Downloads\\Aplicaionweb-master\\Aplicaionweb-master\\freshdent\\freshdent\\obj\\",
+        "outputPath": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Proyecto Web\\Aplicaionweb\\freshdent\\freshdent\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

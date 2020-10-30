@@ -91,6 +91,7 @@ AS
 GO
 
 CREATE PROCEDURE SelectExpediente --Muestra toda la información guardada.
+	@IdExpediente INT,
 	@Cedula VARCHAR (100),
 	@Nombres VARCHAR (80),
 	@Apellidos VARCHAR (80),
@@ -103,9 +104,27 @@ AS
 
 		SET NOCOUNT ON;
 
-		SELECT * FROM Expediente
+		SELECT * FROM Expediente WHERE IdExpediente = @IdExpediente
 	END
 GO
+
+CREATE PROCEDURE SelectExpedienteAll
+	@Cedula VARCHAR (100),
+	@Nombres VARCHAR (80),
+	@Apellidos VARCHAR (80),
+	@Fecha_Nacimiento varchar (20),
+	@Telefono_Celular INT, 
+	@Municipio VARCHAR (50), 
+	@Departamento VARCHAR (50)
+
+AS
+	BEGIN
+		SET NOCOUNT ON;
+		
+		SELECT * FROM Expediente;
+	END
+GO
+
 CREATE PROCEDURE UpdateExpediente -- actualiza los dato de expediente
 	@Cedula VARCHAR (100),
 	@Nombres VARCHAR (80),
@@ -125,6 +144,7 @@ AS
 GO
 
 CREATE PROCEDURE DeleteExpediente-- elimina campos de la base de dato
+	@IdExpediente INT,
 	@Cedula VARCHAR (100),
 	@Nombres VARCHAR (80),
 	@Apellidos VARCHAR (80),
@@ -138,7 +158,7 @@ AS
 
 		SET NOCOUNT ON;
 
-		DELETE Expediente WHERE Cedula = @Cedula
+		DELETE Expediente WHERE IdExpediente = @IdExpediente
 
 	END
 GO
@@ -146,6 +166,7 @@ GO
 --Se crea el procedimiento almacenado para la tabla Médico
 
 CREATE PROCEDURE InsertMedico  --Guarda la información insertada.
+	@IdMedico INT,
 	@NombreMedico VARCHAR (30),
 	@Telefono_Celular INT
 AS
@@ -165,8 +186,22 @@ AS
 GO
 
 CREATE PROCEDURE SelectMedico --Muestra toda la información guardada.
+	@IdMedico INT,
 	@NombreMedico VARCHAR (30),
 	@Telefono_Celular INT
+AS
+	BEGIN
+
+		SET NOCOUNT ON;
+
+		SELECT * FROM Medico WHERE IdMedico = @IdMedico
+	END
+GO
+
+CREATE PROCEDURE SelectMedicoAll
+	@NombreMedico VARCHAR (30),
+	@Telefono_Celular INT
+
 AS
 	BEGIN
 
@@ -188,6 +223,7 @@ AS
 GO
 
 CREATE PROCEDURE DeleteMedico-- elimina campos de la base de dato
+	@IdMedico INT,
 	@NombreMedico VARCHAR (30),
 	@Telefono_Celular INT
 AS
@@ -196,7 +232,7 @@ AS
 
 		SET NOCOUNT ON;
 
-		DELETE Medico WHERE NombreMedico = @NombreMedico
+		DELETE Medico WHERE IdMedico = @IdMedico
 
 	END
 GO
@@ -254,7 +290,26 @@ AS
 	END
 GO
 
+CREATE PROCEDURE SelectConsultaAll
+	@Fecha DATE, 
+	@Hora TIME, 
+	@Sintoma VARCHAR (250), 
+	@Diagnostico VARCHAR (200), 
+	@IdExpediente INT, 
+	@IdMedico INT
+
+
+AS
+	BEGIN
+
+		SET NOCOUNT ON;
+		SELECT * FROM Consulta
+		
+	END
+GO
+
 CREATE PROCEDURE DeleteConsulta-- elimina campos de la base de dato
+	@IdConsulta INT,
 	@Fecha DATE, 
 	@Hora TIME, 
 	@Sintoma VARCHAR (250), 
@@ -268,7 +323,7 @@ AS
 
 		SET NOCOUNT ON;
 
-		DELETE Consulta WHERE Fecha = @Fecha
+		DELETE Consulta WHERE IdConsulta = @IdConsulta
 
 	END
 GO
@@ -299,6 +354,22 @@ CREATE PROCEDURE InsertReceta  --Guarda la información insertada.
 GO
 
 CREATE PROCEDURE SelectReceta--Muestra toda la información guardada.
+	 @IdReceta INT,
+	 @Nombre VARCHAR (50), 
+	 @Presentacion VARCHAR (100), 
+	 @Cantidad INT, 
+	 @Descripcion VARCHAR (150)
+	
+AS
+	BEGIN
+
+		SET NOCOUNT ON;
+		SELECT * from Receta WHERE IdReceta = @IdReceta
+		
+	END
+GO
+
+CREATE PROCEDURE SelectRecetaAll
 	 @Nombre VARCHAR (50), 
 	 @Presentacion VARCHAR (100), 
 	 @Cantidad INT, 
@@ -309,11 +380,11 @@ AS
 
 		SET NOCOUNT ON;
 		SELECT * from Receta
-		
 	END
 GO
 
 CREATE PROCEDURE DeleteReceta-- elimina campos de la base de dato
+	 @IdReceta INT,
 	 @Nombre VARCHAR (50), 
 	 @Presentacion VARCHAR (100), 
 	 @Cantidad INT, 
@@ -326,7 +397,7 @@ AS
 
 		SET NOCOUNT ON;
 
-		DELETE Receta WHERE Nombre = @Nombre
+		DELETE Receta WHERE IdReceta = @IdReceta
 
 	END
 GO
