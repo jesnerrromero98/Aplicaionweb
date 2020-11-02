@@ -1,0 +1,24 @@
+<table id="customer">
+  <tr>
+    <th>IDExpediente</th>
+    <th>Cedula</th>
+    <th>Nombres</th>
+    <th>Apellidos</th>
+    <th>Fecha_Nacimiento</th>
+    <th>Telefono_Celular</th>
+    <th>Municipio</th>
+    <th>Departamento</th>
+  </tr>
+  <tbody>
+    <tr *ngFor="let expediente of expedientes">
+      <td>{{expediente.idexpediente}}</td>
+      <td>{{expediente.cedula}}</td>
+      <td>{{expediente.nombres}}</td>
+      <td>{{expediente.apellidos}}</td>
+      <td>{{expediente.fecha_nacimiento}}</td>
+      <td>{{expediente.telefono_celular}}</td>
+      <td>{{expediente.municipio}}</td>
+      <td>{{expediente.departamento}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,14 @@
+<table id="customer">
+  <tr>
+    <th>IDMedico</th>
+    <th>NombreMedico</th>
+    <th>Telefono_Celular</th>
+  </tr>
+  <tbody>
+    <tr *ngFor="let expediente of expedientes">
+      <td>{{expediente.id}}</td>
+      <td>{{expediente.nombremedico}}</td>
+      <td>{{expediente.telefono_celular}}</td>
+    </tr>
+  </tbody>
+</table>

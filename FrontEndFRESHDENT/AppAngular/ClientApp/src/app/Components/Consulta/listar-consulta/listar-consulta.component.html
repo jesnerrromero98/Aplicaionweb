@@ -1,0 +1,22 @@
+<table id="customer">
+  <tr>
+    <th>IDConsulta</th>
+    <th>Fecha</th>
+    <th>Hora</th>
+    <th>Sintoma</th>
+    <th>Diagnostico</th>
+    <th>IDExpediente</th>
+    <th>IDMedico</th>
+  </tr>
+  <tbody>
+    <tr *ngFor="let expediente of expedientes">
+      <td>{{expediente.idconsulta}}</td>
+      <td>{{expediente.fecha}}</td>
+      <td>{{expediente.hora}}</td>
+      <td>{{expediente.sintoma}}</td>
+      <td>{{expediente.diagnostico}}</td>
+      <td>{{expediente.idexpdiente}}</td>
+      <td>{{expediente.idmedico}}</td>
+    </tr>
+  </tbody>
+</table>
