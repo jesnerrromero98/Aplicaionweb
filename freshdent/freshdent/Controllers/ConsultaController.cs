@@ -26,8 +26,8 @@ namespace freshdent.Controllers
         }
 
         //GET: api/<ConsultaController>/5
-        [HttpGet("{@id}", Name = "Get")]
-        public Medico Get(int id)
+        [HttpGet("{IdConsulta}", Name = "Get")]
+        public Consulta Get(int id)
         {
             return _oConsultaService.Get(id);
         }
@@ -39,8 +39,15 @@ namespace freshdent.Controllers
             if (ModelState.IsValid) _oConsultaService.Add(oConsulta);
         }
 
+        //PUT: api/<MedicoController>/5
+        [HttpPut]
+        public void Put([FromBody] Consulta oConsulta)
+        {
+            if (ModelState.IsValid) _oConsultaService.Update(oConsulta);
+        }
+
         //DELETE api/<ConsultaController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{IdConsulta}")]
         public void Delete(int id)
         {
             if (id != 0) _oConsultaService.Delete(id);

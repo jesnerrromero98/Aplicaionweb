@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace freshdent.Services
 {
-    public class ExpedienteService
+    public class ExpedienteService : IExpedienteService
     {
         Expediente _oExpediente = new Expediente();
         List<Expediente> _oExpedientes = new List<Expediente>();
@@ -27,7 +27,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oExpediente = con.Query<Expediente>("InsertExpediente", this.setParameters(oExpediente),
+                        var oExpedientes = con.Query<Expediente>("InsertExpediente", this.setParameters(oExpediente),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -112,6 +112,7 @@ namespace freshdent.Services
         }
         public Expediente Update(Expediente oExpediente)
         {
+            _oExpediente = new Expediente();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))

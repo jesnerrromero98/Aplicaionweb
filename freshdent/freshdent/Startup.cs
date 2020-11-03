@@ -34,11 +34,11 @@ namespace freshdent
 
             services.AddSingleton<IConfiguration>(Configuration);
             Global.ConnectionString = Configuration.GetConnectionString("FRESHDENT");
-            
-            services.AddScoped<IExpedienteService>();//Al realizar la llamada de ExpedienteService me indica error porque la accion define que devuelve un mismo valor.
-            services.AddScoped<IConsultaService>();//Al realizar la llamada de ConsultaService me indica error porque la accion define que devuelve un mismo valor.
-            services.AddScoped<IMedicoService>();//Al realizar la llamada de MedicoService me indica error porque la accion define que devuelve un mismo valor.
-            services.AddScoped<IRecetaService>();//Al realizar la llamada de RecetaService me indica error porque la accion define que devuelve un mismo valor.
+
+            services.AddScoped<IExpedienteService, ExpedienteService>();
+            services.AddScoped<IRecetaService, RecetaService>();
+            services.AddScoped<IMedicoService, MedicoService>();
+            services.AddScoped<IConsultaService, ConsultaService>();
 
             services.AddSwaggerGen(c =>
             {

@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace freshdent.Services
 {
-    public class RecetaService
+    public class RecetaService : IRecetaService
     {
         Receta _oReceta = new Receta();
         List<Receta> _oRecetas = new List<Receta>();
 
-        public Receta Add(Receta oExpediente)
+        public Receta Add(Receta oReceta)
         {
             _oReceta = new Receta();
             try
@@ -27,7 +27,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oReceta = con.Query<Receta>("InsertReceta", this.setParameters(oReceta),
+                        var oRecetas = con.Query<Receta>("InsertReceta", this.setParameters(oReceta),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -112,6 +112,7 @@ namespace freshdent.Services
         }
         public Receta Update(Receta oReceta)
         {
+            _oReceta = new Receta();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -119,7 +120,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oExpedientes = con.Query<Expediente>("UpdateReceta", this.setParameters(oReceta),
+                        var oRecetas = con.Query<Expediente>("UpdateReceta", this.setParameters(oReceta),
                             commandType: CommandType.StoredProcedure);
                     }
                 }

@@ -9,10 +9,10 @@ namespace freshdent.Iservices
 {
     public interface IExpedienteService
     {
-        IExpedienteService Add(IExpedienteService oExpediente);
-        List<IExpedienteService> Gets();
-        IExpedienteService Get(int ExpedienteId);
+        Expediente Add(Expediente oExpediente);
+        List<Expediente> Gets();
+        Expediente Get(int ExpedienteId);
         string Delete(int ExpedienteId);
-        IExpedienteService Update(IExpedienteService oExpediente);
+        Expediente Update(Expediente oExpediente);
     }
 }

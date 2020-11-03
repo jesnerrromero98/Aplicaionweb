@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace freshdent.Services
 {
-    public class MedicoService
+    public class MedicoService : IMedicoService
     {
         Medico _oMedico = new Medico();
         List<Medico> _oMedicos = new List<Medico>();
@@ -27,7 +27,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oExpediente = con.Query<Medico>("InsertMedico", this.setParameters(oMedico),
+                        var oMedicos = con.Query<Medico>("InsertMedico", this.setParameters(oMedico),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -112,6 +112,7 @@ namespace freshdent.Services
         }
         public Medico Update(Medico oMedico)
         {
+            _oMedico = new Medico();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -119,7 +120,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oMedicos = con.Query<Medico>("UpdateMedico", this.setParameters(oExpediente),
+                        var oMedicos = con.Query<Medico>("UpdateMedico", this.setParameters(oMedico),
                             commandType: CommandType.StoredProcedure);
                     }
                 }

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace freshdent.Services
 {
-    public class ConsultaService
+    public class ConsultaService : IConsultaService
     {
         Consulta _oConsulta = new Consulta();
         List<Consulta> _oConsultas = new List<Consulta>();
@@ -28,7 +28,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsulta = con.Query<Consulta>("InsertConsulta", this.setParameters(oExpediente),
+                        var oConsultas = con.Query<Consulta>("InsertConsulta", this.setParameters(oConsulta),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -73,7 +73,7 @@ namespace freshdent.Services
                         con.Open();
                         var param = new DynamicParameters();
                         param.Add("@IdConsulta", ConsultaId);
-                        var oConsulta = con.Query<Expediente>("SelectConsulta", param, commandType: CommandType.StoredProcedure).ToList();
+                        var oConsulta = con.Query<Consulta>("SelectConsulta", param, commandType: CommandType.StoredProcedure).ToList();
                         if (oConsulta != null && oConsulta.Count() > 0)
                         {
                             _oConsulta = oConsulta.SingleOrDefault();
@@ -113,6 +113,7 @@ namespace freshdent.Services
         }
         public Consulta Update(Consulta oConsulta)
         {
+            _oConsulta = new Consulta();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -120,7 +121,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oExpedientes = con.Query<Consulta>("UpdateConsulta", this.setParameters(oExpediente),
+                        var oConsultas = con.Query<Consulta>("UpdateConsulta", this.setParameters(oConsulta),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
