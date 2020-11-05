@@ -42,8 +42,8 @@ CONSTRAINT Medico_Nombre UNIQUE (Telefono_Celular)
 
 CREATE TABLE Consulta (																	--Creación de la tabla Consulta.
 IdConsulta INT PRIMARY KEY IDENTITY (1,1),												--Almacena código de consulta.
-Fecha DATE,																				--Almacena la fecha que se está realizando la consulta.
-Hora TIME,																				--Almacena la hora que se está realizando la consulta.
+Fecha VARCHAR (10),																				--Almacena la fecha que se está realizando la consulta.
+Hora VARCHAR (10),																				--Almacena la hora que se está realizando la consulta.
 Sintoma VARCHAR (250),																	--Almacena los síntomas mencionada por la persona que está en consulta.
 Diagnostico VARCHAR (200),																--Almacena el diagnóstico que determina el medico.
 IdExpediente INT																		/*Almacena el código del expediente.*/

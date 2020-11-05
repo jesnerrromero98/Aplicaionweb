@@ -26,7 +26,7 @@ namespace freshdent.Controllers
         }
 
         //GET: api/<ConsultaController>/5
-        [HttpGet("{IdConsulta}", Name = "Get")]
+        [HttpGet("{Id}", Name = "Get")]
         public Consulta Get(int id)
         {
             return _oConsultaService.Get(id);
@@ -47,7 +47,7 @@ namespace freshdent.Controllers
         }
 
         //DELETE api/<ConsultaController>/5
-        [HttpDelete("{IdConsulta}")]
+        [HttpDelete("{Id}")]
         public void Delete(int id)
         {
             if (id != 0) _oConsultaService.Delete(id);

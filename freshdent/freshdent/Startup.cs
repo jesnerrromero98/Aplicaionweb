@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using freshdent.Conexion;
 using freshdent.Iservices;
 using freshdent.Services;
+using freshdent.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -42,7 +43,7 @@ namespace freshdent
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Myservices", Version = "v1" });
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My Services", Version = "v1" });
             });
         }
 

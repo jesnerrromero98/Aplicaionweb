@@ -28,7 +28,7 @@ namespace freshdent.Controllers
         }
 
         //GET: api/<RecetaController>/5
-        [HttpGet("{IdReceta}", Name ="Get")]
+        [HttpGet("{Id}", Name ="Get")]
         public Receta Get (int id)
         {
             return _oRecetaService.Get(id);
@@ -40,6 +40,7 @@ namespace freshdent.Controllers
         {
             if (ModelState.IsValid) _oRecetaService.Add(oReceta);
         }
+
         //PUT: api/<MedicoController>/5
         [HttpPut]
         public void Put([FromBody]Receta oReceta)
@@ -48,7 +49,7 @@ namespace freshdent.Controllers
         }
 
         //DELETE api/<RecetaController>/5
-        [HttpDelete("{IdReceta}")]
+        [HttpDelete("{Id}")]
         public void Delete (int id)
         {
             if (id != 0) _oRecetaService.Delete(id);
