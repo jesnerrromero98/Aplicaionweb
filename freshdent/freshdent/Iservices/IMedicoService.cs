@@ -8,10 +8,10 @@ namespace freshdent.Iservices
 {
     public interface IMedicoService
     {
-        Medico Add(Medico oMedico);
-        List<Medico> Gets();
-        Medico Get(int MedicoId);
-        string Delete(int MedicoId);
-        Medico Update(Medico oMedico);
+        Medico MedicoAdd(Medico oMedico);
+        List<Medico> MedicoGets();
+        Medico MedicoGet(int MedicoId);
+        string MedicoDelete(int MedicoId);
+        Medico MedicoUpdate(Medico oMedico);
     }
 }

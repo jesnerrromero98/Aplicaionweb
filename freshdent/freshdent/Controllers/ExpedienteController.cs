@@ -21,37 +21,37 @@ namespace freshdent.Controllers
 
         //GET: api/<ExpedienteController>
         [HttpGet]
-        public IEnumerable<Expediente> Get()
+        public IEnumerable<Expediente> ExpedienteGets()
         {
-            return _oExpedienteService.Gets();
+            return _oExpedienteService.ExpedienteGets();
         }
 
         //GET: api/<ExpedienteController>/5
-        [HttpGet("{Id}", Name = "Get")]
-        public Expediente Get(int id)
+        [HttpGet("{Id}", Name = "ExpedienteGet")]
+        public Expediente ExpedienteGet(int id)
         {
-            return _oExpedienteService.Get(id);
+            return _oExpedienteService.ExpedienteGet(id);
         }
 
         //POST: api/<ExpedienteController>
         [HttpPost]
         public void Post([FromBody] Expediente oExpediente)
         {
-            if (ModelState.IsValid) _oExpedienteService.Add(oExpediente);
+            if (ModelState.IsValid) _oExpedienteService.ExpedienteAdd(oExpediente);
         }
 
         //PUT: api/<ExpedienteController>/5
         [HttpPut]
         public void Put([FromBody]Expediente oExpediente)
         {
-            if (ModelState.IsValid) _oExpedienteService.Update(oExpediente);
+            if (ModelState.IsValid) _oExpedienteService.ExpedienteUpdate(oExpediente);
         }
 
         //DELETE: api/<ExpedienteController>/5
         [HttpDelete("{Id}")]
         public void Delete(int id)
         {
-            if (id != 0) _oExpedienteService.Delete(id);
+            if (id != 0) _oExpedienteService.ExpedienteDelete(id);
         }
     }
 }

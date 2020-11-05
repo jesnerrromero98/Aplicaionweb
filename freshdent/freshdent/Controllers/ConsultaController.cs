@@ -20,37 +20,37 @@ namespace freshdent.Controllers
         }
         //GET: api/<ConsultaController>
         [HttpGet]
-        public IEnumerable<Consulta> Get()
+        public IEnumerable<Consulta> ConsultaGets()
         {
-            return _oConsultaService.Gets();
+            return _oConsultaService.ConsultaGets();
         }
 
         //GET: api/<ConsultaController>/5
-        [HttpGet("{Id}", Name = "Get")]
-        public Consulta Get(int id)
+        [HttpGet("{Id}", Name = "ConsultaGet")]
+        public Consulta ConsultaGet(int id)
         {
-            return _oConsultaService.Get(id);
+            return _oConsultaService.ConsultaGet(id);
         }
 
         //POST: api/<ConsultaController>
         [HttpPost]
         public void Post([FromBody] Consulta oConsulta)
         {
-            if (ModelState.IsValid) _oConsultaService.Add(oConsulta);
+            if (ModelState.IsValid) _oConsultaService.ConsultaAdd(oConsulta);
         }
 
         //PUT: api/<MedicoController>/5
         [HttpPut]
         public void Put([FromBody] Consulta oConsulta)
         {
-            if (ModelState.IsValid) _oConsultaService.Update(oConsulta);
+            if (ModelState.IsValid) _oConsultaService.ConsultaUpdate(oConsulta);
         }
 
         //DELETE api/<ConsultaController>/5
         [HttpDelete("{Id}")]
         public void Delete(int id)
         {
-            if (id != 0) _oConsultaService.Delete(id);
+            if (id != 0) _oConsultaService.ConsultaDelete(id);
         }
     }
 }

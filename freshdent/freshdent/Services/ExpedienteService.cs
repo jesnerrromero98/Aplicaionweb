@@ -17,7 +17,7 @@ namespace freshdent.Services
         Expediente _oExpediente = new Expediente();
         List<Expediente> _oExpedientes = new List<Expediente>();
 
-        public Expediente Add(Expediente oExpediente)
+        public Expediente ExpedienteAdd(Expediente oExpediente)
         {
             _oExpediente = new Expediente();
             try
@@ -39,7 +39,7 @@ namespace freshdent.Services
             return _oExpediente;
         }
         
-        public string Delete (int ExpedienteId)
+        public string ExpedienteDelete (int ExpedienteId)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace freshdent.Services
             }
             return _oExpediente.Error;
         }
-        public Expediente Get(int ExpedienteId)
+        public Expediente ExpedienteGet(int ExpedienteId)
         {
             _oExpediente = new Expediente();
             try
@@ -86,7 +86,7 @@ namespace freshdent.Services
             }
             return _oExpediente;
         }
-        public List <Expediente> Gets()
+        public List <Expediente> ExpedienteGets()
         {
             _oExpedientes = new List<Expediente>();
             try
@@ -110,7 +110,7 @@ namespace freshdent.Services
             }
             return _oExpedientes;
         }
-        public Expediente Update(Expediente oExpediente)
+        public Expediente ExpedienteUpdate(Expediente oExpediente)
         {
             _oExpediente = new Expediente();
             try

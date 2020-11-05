@@ -20,37 +20,37 @@ namespace freshdent.Controllers
         }
         //GET: api/<RecetaController>
         [HttpGet]
-        public IEnumerable<Medico> Get()
+        public IEnumerable<Medico> MedicoGets()
         {
-            return _oMedicoService.Gets();
+            return _oMedicoService.MedicoGets();
         }
 
         //GET: api/<MedicoController>/5
-        [HttpGet("{Id}", Name = "Get")]
-        public Medico Get(int id)
+        [HttpGet("{Id}", Name = "MedicoGet")]
+        public Medico MedicoGet(int id)
         {
-            return _oMedicoService.Get(id);
+            return _oMedicoService.MedicoGet(id);
         }
 
         //POST: api/<MedicoController>
         [HttpPost]
         public void Post([FromBody] Medico oMedico)
         {
-            if (ModelState.IsValid) _oMedicoService.Add(oMedico);
+            if (ModelState.IsValid) _oMedicoService.MedicoAdd(oMedico);
         }
 
         //PUT: api/<MedicoController>/5
         [HttpPut]
         public void Put ([FromBody] Medico oMedico)
         {
-            if (ModelState.IsValid) _oMedicoService.Update(oMedico);
+            if (ModelState.IsValid) _oMedicoService.MedicoUpdate(oMedico);
         }
 
         //DELETE api/<MedicoController>/5
         [HttpDelete("{Id}")]
         public void Delete(int id)
         {
-            if (id != 0) _oMedicoService.Delete(id);
+            if (id != 0) _oMedicoService.MedicoDelete(id);
         }
     }
 }

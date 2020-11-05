@@ -17,7 +17,7 @@ namespace freshdent.Services
         Receta _oReceta = new Receta();
         List<Receta> _oRecetas = new List<Receta>();
 
-        public Receta Add(Receta oReceta)
+        public Receta RecetaAdd(Receta oReceta)
         {
             _oReceta = new Receta();
             try
@@ -39,7 +39,7 @@ namespace freshdent.Services
             return _oReceta;
         }
 
-        public string Delete(int RecetaId)
+        public string RecetaDelete(int RecetaId)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace freshdent.Services
             }
             return _oReceta.Error;
         }
-        public Receta Get(int RecetaId)
+        public Receta RecetaGet(int RecetaId)
         {
             _oReceta = new Receta();
             try
@@ -86,7 +86,7 @@ namespace freshdent.Services
             }
             return _oReceta;
         }
-        public List<Receta> Gets()
+        public List<Receta> RecetaGets()
         {
             _oRecetas = new List<Receta>();
             try
@@ -110,7 +110,7 @@ namespace freshdent.Services
             }
             return _oRecetas;
         }
-        public Receta Update(Receta oReceta)
+        public Receta RecetaUpdate(Receta oReceta)
         {
             _oReceta = new Receta();
             try

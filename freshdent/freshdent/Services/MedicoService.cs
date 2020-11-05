@@ -17,7 +17,7 @@ namespace freshdent.Services
         Medico _oMedico = new Medico();
         List<Medico> _oMedicos = new List<Medico>();
 
-        public Medico Add(Medico oMedico)
+        public Medico MedicoAdd(Medico oMedico)
         {
             _oMedico = new Medico();
             try
@@ -39,7 +39,7 @@ namespace freshdent.Services
             return _oMedico;
         }
 
-        public string Delete(int MedicoId)
+        public string MedicoDelete(int MedicoId)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace freshdent.Services
             }
             return _oMedico.Error;
         }
-        public Medico Get(int MedicoId)
+        public Medico MedicoGet(int MedicoId)
         {
             _oMedico = new Medico();
             try
@@ -86,7 +86,7 @@ namespace freshdent.Services
             }
             return _oMedico;
         }
-        public List<Medico> Gets()
+        public List<Medico> MedicoGets()
         {
             _oMedicos = new List<Medico>();
             try
@@ -110,7 +110,7 @@ namespace freshdent.Services
             }
             return _oMedicos;
         }
-        public Medico Update(Medico oMedico)
+        public Medico MedicoUpdate(Medico oMedico)
         {
             _oMedico = new Medico();
             try

@@ -8,10 +8,10 @@ namespace freshdent.Iservices
 {
     public interface IRecetaService
     {
-        Receta Add(Receta oReceta);
-        List<Receta> Gets();
-        Receta Get(int RecetaId);
-        string Delete(int RecetaId);
-        Receta Update(Receta oReceta);
+        Receta RecetaAdd(Receta oReceta);
+        List<Receta> RecetaGets();
+        Receta RecetaGet(int RecetaId);
+        string RecetaDelete(int RecetaId);
+        Receta RecetaUpdate(Receta oReceta);
     }
 }

@@ -18,7 +18,7 @@ namespace freshdent.Services
         Consulta _oConsulta = new Consulta();
         List<Consulta> _oConsultas = new List<Consulta>();
 
-        public Consulta Add(Consulta oConsulta)
+        public Consulta ConsultaAdd(Consulta oConsulta)
         {
             _oConsulta = new Consulta();
             try
@@ -40,7 +40,7 @@ namespace freshdent.Services
             return _oConsulta;
         }
 
-        public string Delete(int ConsultaId)
+        public string ConsultaDelete(int ConsultaId)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace freshdent.Services
             }
             return _oConsulta.Error;
         }
-        public Consulta Get(int ConsultaId)
+        public Consulta ConsultaGet(int ConsultaId)
         {
             _oConsulta = new Consulta();
             try
@@ -87,7 +87,7 @@ namespace freshdent.Services
             }
             return _oConsulta;
         }
-        public List<Consulta> Gets()
+        public List<Consulta> ConsultaGets()
         {
             _oConsultas = new List<Consulta>();
             try
@@ -111,7 +111,7 @@ namespace freshdent.Services
             }
             return _oConsultas;
         }
-        public Consulta Update(Consulta oConsulta)
+        public Consulta ConsultaUpdate(Consulta oConsulta)
         {
             _oConsulta = new Consulta();
             try

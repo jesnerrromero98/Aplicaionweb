@@ -8,10 +8,10 @@ namespace freshdent.Iservices
 {
     public interface IConsultaService
     {
-        Consulta Add(Consulta oConsulta);
-        List<Consulta> Gets();
-        Consulta Get(int ConsultaId);
-        string Delete(int ConsultaId);
-        Consulta Update(Consulta oConsulta);
+        Consulta ConsultaAdd(Consulta oConsulta);
+        List<Consulta> ConsultaGets();
+        Consulta ConsultaGet(int ConsultaId);
+        string ConsultaDelete(int ConsultaId);
+        Consulta ConsultaUpdate(Consulta oConsulta);
     }
 }
