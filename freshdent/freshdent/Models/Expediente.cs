@@ -12,7 +12,7 @@ namespace freshdent.Models
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string Fecha_Nacimiento { get; set; }
-        public int Telefono_Celular { get; set; }
+        public string Telefono_Celular { get; set; }
         public string Municipio { get; set; }
         public string Departamento { get; set; }
         public string Error { get; set; }
