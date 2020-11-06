@@ -10,7 +10,7 @@ namespace freshdent.Models
         public int IdReceta { get; set; }
         public string Nombre { get; set; }
         public string Presentacion { get; set; }
-        public int Cantidad { get; set; }
+        public string Cantidad { get; set; }
         public string Descripcion { get; set; }
         public string Error { get; set; }
     }
