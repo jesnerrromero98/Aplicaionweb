@@ -265,7 +265,9 @@ CREATE PROCEDURE SelectConsulta --Muestra toda la información guardada.
 	@Sintoma VARCHAR (250), 
 	@Diagnostico VARCHAR (200), 
 	@IdExpediente INT, 
-	@IdMedico INT
+	@Nombres VARCHAR (80),
+	@IdMedico INT,
+	@NombreMedico VARCHAR (30)
 	
 AS
 	BEGIN

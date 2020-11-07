@@ -43,7 +43,7 @@ namespace freshdent
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My Services", Version = "v1" });
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "SERVICIOS ODONTOLOGICOS" , Version = "v1" });
             });
         }
 
@@ -53,7 +53,7 @@ namespace freshdent
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MySolution V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Servicios Odontologicos");
                 c.RoutePrefix = string.Empty;
             });
             if (env.IsDevelopment())

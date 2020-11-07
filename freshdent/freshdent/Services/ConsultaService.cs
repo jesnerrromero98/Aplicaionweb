@@ -140,8 +140,10 @@ namespace freshdent.Services
             parameters.Add("@Hora", oConsulta.Hora);
             parameters.Add("@Sintoma", oConsulta.Sintoma);
             parameters.Add("@Diagnostico", oConsulta.Diagnostico);
-            parameters.Add("@IdExpediente", oConsulta.IdExpediente);
+            parameters.Add("@IdExpediente", oConsulta.IdExpediente);//Tabla Expediente
+            parameters.Add("@Nombres", oConsulta.Nombres);
             parameters.Add("@IdMedico", oConsulta.IdMedico);
+            parameters.Add("@NombreMedico", oConsulta.NombreMedico);//Tabla Medico
             return parameters;
         }
     }

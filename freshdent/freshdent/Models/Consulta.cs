@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace freshdent.Models
@@ -13,7 +14,9 @@ namespace freshdent.Models
         public string Sintoma { get; set; }
         public string Diagnostico { get; set; }
         public int IdExpediente { get; set; }
+        public string Nombres { get; set; } //Tabla Expediente
         public int IdMedico { get; set; }
+        public string NombreMedico { get; set; } //Tabla Medico
         public string Error { get; set; }
     }
 }
