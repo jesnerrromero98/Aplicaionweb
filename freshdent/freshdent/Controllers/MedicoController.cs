@@ -20,7 +20,7 @@ namespace freshdent.Controllers
         }
         //GET: api/<RecetaController>
         [HttpGet]
-        public IEnumerable<Medico> MedicoGets()
+        public IEnumerable<Medico> MedicoGet()
         {
             return _oMedicoService.MedicoGets();
         }

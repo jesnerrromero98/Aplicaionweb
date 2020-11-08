@@ -135,7 +135,7 @@ namespace freshdent.Services
         {
             DynamicParameters parameters = new DynamicParameters();
             if (oMedico.IdMedico != 0) parameters.Add("@IdMedico", oMedico.IdMedico);
-            parameters.Add("@NombreMedico", oMedico.NombreMedico);
+            parameters.Add("@Nombre_Medico", oMedico.Nombre_Medico);
             parameters.Add("@Telefono_Celular", oMedico.Telefono_Celular);
             return parameters;
         }

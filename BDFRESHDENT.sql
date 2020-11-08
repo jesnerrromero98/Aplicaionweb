@@ -14,12 +14,13 @@ GO
 CREATE TABLE Expediente (																--Creación de la tabla Expediente.
 IdExpediente INT PRIMARY KEY IDENTITY (1,1),											--Almacena el código de expediente.
 Cedula VARCHAR (100),																	--Almacena la cédula de la persona en el expediente.
-Nombres VARCHAR (80),																	--Almacena los nombres de la persona en el expediente.
+Nombres VARCHAR (50),																	--Almacena los nombres de la persona en el expediente.
 Apellidos VARCHAR (80),																	--Almacena los apellidos de la persona en el expediente.
-Fecha_Nacimiento VARCHAR (30),															--Almacena la fecha de nacimiento de la persona en el expediente.
-Telefono_Celular VARCHAR (30),																--Almacena el teléfono-celular de la persona en el expediente.
+Fecha_Nacimiento varchar (30),															--Almacena la fecha de nacimiento de la persona en el expediente.
+Telefono_Celular varchar (30),															--Almacena el teléfono-celular de la persona en el expediente.
 Municipio VARCHAR (50),																	--Almacena el municipio donde vive la persona en el expediente. 
-Departamento VARCHAR (50)
+Departamento VARCHAR (50),																--Almacena el departamento que forma parte el municipio donde vive la persona en el expediente.
+--CONSTRAINT Expediente_Paciente UNIQUE (Cedula, Fecha_Nacimiento, Telefono_Celular)
 );
 -------------------------------------------------------------------------------------------------------------------------------
 
@@ -27,27 +28,29 @@ CREATE TABLE Receta (																	--Creación de la tabla Receta.
 IdReceta INT PRIMARY KEY IDENTITY (1,1),												--Almacena código de receta médica.
 Nombre VARCHAR (50),																	--Almacena el nombre de lo medicamento.
 Presentacion VARCHAR (100),																--Almacena la información del medicamento.
-Cantidad VARCHAR (20),																	--Almacena cantidad de medicamentos.
-Descripcion VARCHAR (150)
+Cantidad VARCHAR (20),																			--Almacena cantidad de medicamentos.
+Descripcion VARCHAR (150),																--Almacena la indicación de la toma del medicamento.
+--CONSTRAINT Receta_Info UNIQUE (Nombre, Cantidad)
 );
 --------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Medico (																	--Creación de la tabla Médico
 IdMedico INT PRIMARY KEY IDENTITY (1,1),												--Almacena el código del médico.
-NombreMedico VARCHAR (30),																--Almacena el nombre del médico.
-Telefono_Celular VARCHAR (20)
+Nombre_Medico VARCHAR (30),																--Almacena el nombre del médico.
+Telefono_Celular VARCHAR (20),															--Almacena el número telefónico personal del médico.
+--CONSTRAINT Medico_Nombre UNIQUE (Telefono_Celular)
 );
 --------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE Consulta (																	--Creación de la tabla Consulta.
 IdConsulta INT PRIMARY KEY IDENTITY (1,1),												--Almacena código de consulta.
-Fecha VARCHAR (10),																		--Almacena la fecha que se está realizando la consulta.
-Hora VARCHAR (10),																		--Almacena la hora que se está realizando la consulta.
+Fecha VARCHAR (10),																				--Almacena la fecha que se está realizando la consulta.
+Hora VARCHAR (10),																				--Almacena la hora que se está realizando la consulta.
 Sintoma VARCHAR (250),																	--Almacena los síntomas mencionada por la persona que está en consulta.
 Diagnostico VARCHAR (200),																--Almacena el diagnóstico que determina el medico.
-IdExpediente INT																		/*Almacena el código del expediente.*/
-FOREIGN KEY (IdExpediente) REFERENCES Expediente (IdExpediente),
-IdMedico INT																			/*Almacena el código del médico.*/
-FOREIGN KEY (IdMedico) REFERENCES Medico (IdMedico),
+Nombres_Paciente VARCHAR (50),																	/*Almacena el código del expediente.*/
+--FOREIGN KEY (Nombres_Paciente) REFERENCES Expediente (Nombres_Paciente),
+NombreMedico VARCHAR (50)																			/*Almacena el código del médico.*/
+--FOREIGN KEY (NombreMedico) REFERENCES Medico (NombreMedico),
 );
 
  ----------------------------------------------------------------PROCEDIMIENTO ALMACENADO------------------------------------------------------------------------------------
@@ -56,9 +59,9 @@ FOREIGN KEY (IdMedico) REFERENCES Medico (IdMedico),
 
 CREATE PROCEDURE InsertExpediente  --Guarda la información insertada.
 	@Cedula VARCHAR (100),
-	@Nombres VARCHAR (80),
+	@Nombres VARCHAR (50),
 	@Apellidos VARCHAR (80),
-	@Fecha_Nacimiento VARCHAR (20),
+	@Fecha_Nacimiento varchar (20),
 	@Telefono_Celular VARCHAR(30), 
 	@Municipio VARCHAR (50), 
 	@Departamento VARCHAR (50)
@@ -68,8 +71,8 @@ AS
 		SET NOCOUNT ON;
 
 		INSERT INTO Expediente (
-		Cedula,																
-		Nombres,																
+		Cedula,	
+		Nombres,																														
 		Apellidos,															
 		Fecha_Nacimiento,														
 		Telefono_Celular,																	
@@ -89,14 +92,14 @@ AS
 GO
 -----------------------------------------------------------------------------------------------
 CREATE PROCEDURE SelectExpediente --Muestra toda la información guardada.
-	@IdExpediente INT
-	--@Cedula VARCHAR (100),
-	--@Nombres VARCHAR (80),
-	--@Apellidos VARCHAR (80),
-	--@Fecha_Nacimiento VARCHAR (20),
-	--@Telefono_Celular VARCHAR(30), 
-	--@Municipio VARCHAR (50), 
-	--@Departamento VARCHAR (50)
+	@IdExpediente INT,
+	@Nombres VARCHAR(50),
+	@Cedula VARCHAR (100),
+	@Apellidos VARCHAR (80),
+	@Fecha_Nacimiento varchar (20),
+	@Telefono_Celular varchar(30), 
+	@Municipio VARCHAR (50), 
+	@Departamento VARCHAR (50)
 AS
 	BEGIN
 
@@ -111,16 +114,16 @@ AS
 	BEGIN
 		SET NOCOUNT ON;
 		
-		SELECT * FROM Expediente
+		SELECT * FROM Expediente;
 	END
 GO
 -----------------------------------------------------------------------------------------
 CREATE PROCEDURE UpdateExpediente -- actualiza los dato de expediente
 	@Cedula VARCHAR (100),
-	@Nombres VARCHAR (80),
+	@Nombres VARCHAR (50),
 	@Apellidos VARCHAR (80),
-	@Fecha_Nacimiento VARCHAR (20),
-	@Telefono_Celular VARCHAR(30), 
+	@Fecha_Nacimiento varchar (20),
+	@Telefono_Celular varchar(30), 
 	@Municipio VARCHAR (50), 
 	@Departamento VARCHAR (50)
 AS
@@ -136,10 +139,9 @@ GO
 CREATE PROCEDURE DeleteExpediente-- elimina campos de la base de dato
 	@IdExpediente INT
 	--@Cedula VARCHAR (100),
-	--@Nombres VARCHAR (80),
 	--@Apellidos VARCHAR (80),
-	--@Fecha_Nacimiento VARCHAR (20),
-	--@Telefono_Celular VARCHAR(30), 
+	--@Fecha_Nacimiento varchar (20),
+	--@Telefono_Celular varchar(30), 
 	--@Municipio VARCHAR (50), 
 	--@Departamento VARCHAR (50)
 AS
@@ -156,7 +158,7 @@ GO
 --Se crea el procedimiento almacenado para la tabla Médico
 
 CREATE PROCEDURE InsertMedico  --Guarda la información insertada.
-	@NombreMedico VARCHAR (30),
+	@Nombre_Medico VARCHAR (30),
 	@Telefono_Celular VARCHAR(20)
 AS
 	BEGIN
@@ -164,10 +166,10 @@ AS
 	SET NOCOUNT ON;
 
  INSERT INTO Medico(
-		NombreMedico,
+		Nombre_Medico,
 		Telefono_Celular
 		) VALUES (
-		@NombreMedico,
+		@Nombre_Medico,
 		@Telefono_Celular
 		
 		)
@@ -176,7 +178,6 @@ GO
 -------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE SelectMedico --Muestra toda la información guardada.
 	@IdMedico INT
-	--@NombreMedico VARCHAR (30),
 	--@Telefono_Celular VARCHAR(20)
 AS
 	BEGIN
@@ -198,20 +199,19 @@ AS
 GO
 -------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE UpdateMedico -- actualiza los dato
-	@NombreMedico VARCHAR (30),
+	@Nombre_Medico VARCHAR (30),
 	@Telefono_Celular VARCHAR(20)
 AS
 	BEGIN
 
 		SET NOCOUNT ON;
 
-		UPDATE Medico SET NombreMedico = @NombreMedico, Telefono_Celular = @Telefono_Celular
+		UPDATE Medico SET Nombre_Medico = @Nombre_Medico, Telefono_Celular = @Telefono_Celular
 	END
 GO
 -------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE DeleteMedico-- elimina campos de la base de dato
 	@IdMedico INT
-	--@NombreMedico VARCHAR (30),
 	--@Telefono_Celular VARCHAR(20)
 AS
 
@@ -231,8 +231,8 @@ CREATE PROCEDURE InsertConsulta  --Guarda la información insertada.
 	@Hora VARCHAR(10),
 	@Sintoma VARCHAR (250), 
 	@Diagnostico VARCHAR (200), 
-	@IdExpediente INT, 
-	@IdMedico INT
+	@Nombres_Paciente VARCHAR (50), 
+	@NombreMedico VARCHAR (50)
 	
 	AS
 	BEGIN
@@ -244,35 +244,28 @@ CREATE PROCEDURE InsertConsulta  --Guarda la información insertada.
 		Hora, 
 		Sintoma, 
 		Diagnostico, 
-		IdExpediente, 
-		IdMedico
+		Nombres_Paciente, 
+		NombreMedico
 	) VALUES (
 		@Fecha, 
 		@Hora, 
 		@Sintoma, 
 		@Diagnostico, 
-		@IdExpediente, 
-		@IdMedico
+		@Nombres_Paciente, 
+		@NombreMedico
 		
 		)
 	END
 GO
 ------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE SelectConsulta --Muestra toda la información guardada.
-	@Fecha VARCHAR(10),
-	@Hora VARCHAR(10),
-	@Sintoma VARCHAR (250), 
-	@Diagnostico VARCHAR (200), 
-	@IdExpediente INT, 
-	@IdMedico INT
+	@IdConsulta INT
 	
 AS
 	BEGIN
 
 		SET NOCOUNT ON;
-		SELECT c.IdConsulta,c.Fecha,c.Hora,c.Sintoma,c.Diagnostico,m.IdMedico,M.NombreMedico,X.IdExpediente,X.Nombres
-				FROM Medico AS M INNER JOIN Consulta AS c
-				ON M.IdMedico =c.IdMedico  inner join Expediente as X on X.IdExpediente=C.IdExpediente 
+		SELECT * FROM Consulta WHERE IdConsulta = @IdConsulta
 		
 	END
 GO
@@ -292,13 +285,15 @@ CREATE PROCEDURE UpdateConsulta -- actualiza los dato
 	@Fecha VARCHAR(10),
 	@Hora VARCHAR(10),
 	@Sintoma VARCHAR(250),
-	@Diagnostico VARCHAR(200)
+	@Diagnostico VARCHAR(200),
+	@Nombres_Paciente VARCHAR(50),
+	@NombreMedico VARCHAR (50)
 AS
 	BEGIN
 
 		SET NOCOUNT ON;
 
-		UPDATE Consulta SET Fecha=@Fecha, Hora=@Hora, Sintoma=@Sintoma, Diagnostico=@Diagnostico
+		UPDATE Consulta SET Fecha=@Fecha, Hora=@Hora, Sintoma=@Sintoma, Diagnostico=@Diagnostico, Nombres_Paciente = @Nombres_Paciente, NombreMedico = @NombreMedico
 	END
 GO
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -308,8 +303,8 @@ CREATE PROCEDURE DeleteConsulta-- elimina campos de la base de dato
 	--@Hora VARCHAR(10),
 	--@Sintoma VARCHAR (250), 
 	--@Diagnostico VARCHAR (200), 
-	--@IdExpediente INT, 
-	--@IdMedico INT
+	--@Nombres_Paciente INT, 
+	--@NombreMedico INT
 	
 AS
 
