@@ -21,7 +21,7 @@ namespace freshdent.Controllers
 
         //GET: api/<ExpedienteController>
         [HttpGet]
-        public IEnumerable<Expediente> ExpedienteGets()
+        public IEnumerable<Expediente> ExpedienteGet()
         {
             return _oExpedienteService.ExpedienteGets();
         }

@@ -131,7 +131,7 @@ namespace freshdent.Services
             }
             return _oExpediente;
         }
-        private DynamicParameters setParameters (Expediente oExpediente)
+        private DynamicParameters setParameters(Expediente oExpediente)
         {
             DynamicParameters parameters = new DynamicParameters();
             if (oExpediente.IdExpediente != 0) parameters.Add("@IdExpediente", oExpediente.IdExpediente);

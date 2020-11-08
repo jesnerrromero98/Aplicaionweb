@@ -22,7 +22,7 @@ namespace freshdent.Controllers
 
         //GET: api/<RecetaController>
         [HttpGet]
-        public IEnumerable<Receta> RecetaGets()
+        public IEnumerable<Receta> RecetaGet()
         {
             return _oRecetaService.RecetaGets();
         }

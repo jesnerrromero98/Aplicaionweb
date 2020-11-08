@@ -20,7 +20,7 @@ namespace freshdent.Controllers
         }
         //GET: api/<ConsultaController>
         [HttpGet]
-        public IEnumerable<Consulta> ConsultaGets()
+        public IEnumerable<Consulta> ConsultaGet()
         {
             return _oConsultaService.ConsultaGets();
         }

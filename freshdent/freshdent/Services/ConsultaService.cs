@@ -2,7 +2,6 @@
 using freshdent.Conexion;
 using freshdent.Iservices;
 using freshdent.Models;
-using freshdent.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -140,10 +139,8 @@ namespace freshdent.Services
             parameters.Add("@Hora", oConsulta.Hora);
             parameters.Add("@Sintoma", oConsulta.Sintoma);
             parameters.Add("@Diagnostico", oConsulta.Diagnostico);
-            parameters.Add("@IdExpediente", oConsulta.IdExpediente);//Tabla Expediente
-            parameters.Add("@Nombres", oConsulta.Nombres);
+            parameters.Add("@IdExpediente", oConsulta.IdExpediente);
             parameters.Add("@IdMedico", oConsulta.IdMedico);
-            parameters.Add("@NombreMedico", oConsulta.NombreMedico);//Tabla Medico
             return parameters;
         }
     }

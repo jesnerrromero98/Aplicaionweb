@@ -89,14 +89,14 @@ AS
 GO
 -----------------------------------------------------------------------------------------------
 CREATE PROCEDURE SelectExpediente --Muestra toda la información guardada.
-	@IdExpediente INT,
-	@Cedula VARCHAR (100),
-	@Nombres VARCHAR (80),
-	@Apellidos VARCHAR (80),
-	@Fecha_Nacimiento VARCHAR (20),
-	@Telefono_Celular VARCHAR(30), 
-	@Municipio VARCHAR (50), 
-	@Departamento VARCHAR (50)
+	@IdExpediente INT
+	--@Cedula VARCHAR (100),
+	--@Nombres VARCHAR (80),
+	--@Apellidos VARCHAR (80),
+	--@Fecha_Nacimiento VARCHAR (20),
+	--@Telefono_Celular VARCHAR(30), 
+	--@Municipio VARCHAR (50), 
+	--@Departamento VARCHAR (50)
 AS
 	BEGIN
 
@@ -111,7 +111,7 @@ AS
 	BEGIN
 		SET NOCOUNT ON;
 		
-		SELECT * FROM Expediente;
+		SELECT * FROM Expediente
 	END
 GO
 -----------------------------------------------------------------------------------------
@@ -134,14 +134,14 @@ AS
 GO
 ----------------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE DeleteExpediente-- elimina campos de la base de dato
-	@IdExpediente INT,
-	@Cedula VARCHAR (100),
-	@Nombres VARCHAR (80),
-	@Apellidos VARCHAR (80),
-	@Fecha_Nacimiento VARCHAR (20),
-	@Telefono_Celular VARCHAR(30), 
-	@Municipio VARCHAR (50), 
-	@Departamento VARCHAR (50)
+	@IdExpediente INT
+	--@Cedula VARCHAR (100),
+	--@Nombres VARCHAR (80),
+	--@Apellidos VARCHAR (80),
+	--@Fecha_Nacimiento VARCHAR (20),
+	--@Telefono_Celular VARCHAR(30), 
+	--@Municipio VARCHAR (50), 
+	--@Departamento VARCHAR (50)
 AS
 
 	BEGIN
@@ -156,7 +156,6 @@ GO
 --Se crea el procedimiento almacenado para la tabla Médico
 
 CREATE PROCEDURE InsertMedico  --Guarda la información insertada.
-	@IdMedico INT,
 	@NombreMedico VARCHAR (30),
 	@Telefono_Celular VARCHAR(20)
 AS
@@ -176,9 +175,9 @@ AS
 GO
 -------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE SelectMedico --Muestra toda la información guardada.
-	@IdMedico INT,
-	@NombreMedico VARCHAR (30),
-	@Telefono_Celular VARCHAR(20)
+	@IdMedico INT
+	--@NombreMedico VARCHAR (30),
+	--@Telefono_Celular VARCHAR(20)
 AS
 	BEGIN
 
@@ -211,9 +210,9 @@ AS
 GO
 -------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE DeleteMedico-- elimina campos de la base de dato
-	@IdMedico INT,
-	@NombreMedico VARCHAR (30),
-	@Telefono_Celular VARCHAR(20)
+	@IdMedico INT
+	--@NombreMedico VARCHAR (30),
+	--@Telefono_Celular VARCHAR(20)
 AS
 
 	BEGIN
@@ -265,9 +264,7 @@ CREATE PROCEDURE SelectConsulta --Muestra toda la información guardada.
 	@Sintoma VARCHAR (250), 
 	@Diagnostico VARCHAR (200), 
 	@IdExpediente INT, 
-	@Nombres VARCHAR (80),
-	@IdMedico INT,
-	@NombreMedico VARCHAR (30)
+	@IdMedico INT
 	
 AS
 	BEGIN
@@ -306,13 +303,13 @@ AS
 GO
 ----------------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE DeleteConsulta-- elimina campos de la base de dato
-	@IdConsulta INT,
-	@Fecha VARCHAR(10),
-	@Hora VARCHAR(10),
-	@Sintoma VARCHAR (250), 
-	@Diagnostico VARCHAR (200), 
-	@IdExpediente INT, 
-	@IdMedico INT
+	@IdConsulta INT
+	--@Fecha VARCHAR(10),
+	--@Hora VARCHAR(10),
+	--@Sintoma VARCHAR (250), 
+	--@Diagnostico VARCHAR (200), 
+	--@IdExpediente INT, 
+	--@IdMedico INT
 	
 AS
 
@@ -351,11 +348,11 @@ CREATE PROCEDURE InsertReceta  --Guarda la información insertada.
 GO
 ----------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE SelectReceta--Muestra toda la información guardada.
-	 @IdReceta INT,
-	 @Nombre VARCHAR (50), 
-	 @Presentacion VARCHAR (100), 
-	 @Cantidad VARCHAR(20),
-	 @Descripcion VARCHAR (150)
+	 @IdReceta INT
+	 --@Nombre VARCHAR (50), 
+	 --@Presentacion VARCHAR (100), 
+	 --@Cantidad VARCHAR(20),
+	 --@Descripcion VARCHAR (150)
 	
 AS
 	BEGIN
@@ -390,11 +387,11 @@ AS
 GO
 --------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE DeleteReceta-- elimina campos de la base de dato
-	 @IdReceta INT,
-	 @Nombre VARCHAR (50), 
-	 @Presentacion VARCHAR (100), 
-	 @Cantidad VARCHAR(20),
-	 @Descripcion VARCHAR (150)
+	 @IdReceta INT
+	 --@Nombre VARCHAR (50), 
+	 --@Presentacion VARCHAR (100), 
+	 --@Cantidad VARCHAR(20),
+	 --@Descripcion VARCHAR (150)
 	
 	
 AS

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using freshdent.Conexion;
 using freshdent.Iservices;
 using freshdent.Services;
-using freshdent.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -53,7 +52,7 @@ namespace freshdent
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Servicios Odontologicos");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Servicios Odontologicos V1");
                 c.RoutePrefix = string.Empty;
             });
             if (env.IsDevelopment())
