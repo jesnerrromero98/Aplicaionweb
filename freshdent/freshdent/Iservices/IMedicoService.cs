@@ -10,8 +10,8 @@ namespace freshdent.Iservices
     {
         Medico MedicoAdd(Medico oMedico);
         List<Medico> MedicoGets();
-        Medico MedicoGet(int MedicoId);
-        string MedicoDelete(int MedicoId);
+        Medico MedicoGet(int IdMedico);
+        string MedicoDelete(int IdMedico);
         Medico MedicoUpdate(Medico oMedico);
     }
 }

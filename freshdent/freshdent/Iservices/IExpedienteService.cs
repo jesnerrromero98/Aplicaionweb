@@ -11,8 +11,8 @@ namespace freshdent.Iservices
     {
         Expediente ExpedienteAdd(Expediente oExpediente);
         List<Expediente> ExpedienteGets();
-        Expediente ExpedienteGet(int ExpedienteId);
-        string ExpedienteDelete(int ExpedienteId);
+        Expediente ExpedienteGet(int IdExpediente);
+        string ExpedienteDelete(int IdExpediente);
         Expediente ExpedienteUpdate(Expediente oExpediente);
     }
 }

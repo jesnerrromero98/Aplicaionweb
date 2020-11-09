@@ -28,7 +28,7 @@ CREATE TABLE Receta (																	--Creación de la tabla Receta.
 IdReceta INT PRIMARY KEY IDENTITY (1,1),												--Almacena código de receta médica.
 Nombre VARCHAR (50),																	--Almacena el nombre de lo medicamento.
 Presentacion VARCHAR (100),																--Almacena la información del medicamento.
-Cantidad VARCHAR (20),																			--Almacena cantidad de medicamentos.
+Cantidad VARCHAR (20),																	--Almacena cantidad de medicamentos.
 Descripcion VARCHAR (150),																--Almacena la indicación de la toma del medicamento.
 --CONSTRAINT Receta_Info UNIQUE (Nombre, Cantidad)
 );
@@ -92,14 +92,14 @@ AS
 GO
 -----------------------------------------------------------------------------------------------
 CREATE PROCEDURE SelectExpediente --Muestra toda la información guardada.
-	@IdExpediente INT,
-	@Nombres VARCHAR(50),
-	@Cedula VARCHAR (100),
-	@Apellidos VARCHAR (80),
-	@Fecha_Nacimiento varchar (20),
-	@Telefono_Celular varchar(30), 
-	@Municipio VARCHAR (50), 
-	@Departamento VARCHAR (50)
+	@IdExpediente INT
+	--@Nombres VARCHAR(50),
+	--@Cedula VARCHAR (100),
+	--@Apellidos VARCHAR (80),
+	--@Fecha_Nacimiento varchar (20),
+	--@Telefono_Celular varchar(30), 
+	--@Municipio VARCHAR (50), 
+	--@Departamento VARCHAR (50)
 AS
 	BEGIN
 
@@ -114,7 +114,7 @@ AS
 	BEGIN
 		SET NOCOUNT ON;
 		
-		SELECT * FROM Expediente;
+		SELECT * FROM Expediente
 	END
 GO
 -----------------------------------------------------------------------------------------
@@ -293,7 +293,8 @@ AS
 
 		SET NOCOUNT ON;
 
-		UPDATE Consulta SET Fecha=@Fecha, Hora=@Hora, Sintoma=@Sintoma, Diagnostico=@Diagnostico, Nombres_Paciente = @Nombres_Paciente, NombreMedico = @NombreMedico
+		UPDATE Consulta SET Fecha=@Fecha, Hora=@Hora, Sintoma=@Sintoma, Diagnostico=@Diagnostico, 
+		Nombres_Paciente = @Nombres_Paciente, NombreMedico = @NombreMedico
 	END
 GO
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -369,6 +370,7 @@ AS
 GO
 ------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE UpdateReceta -- actualiza los dato
+	@Nombre VARCHAR (50),
 	@Presentacion VARCHAR (100),	
 	@Cantidad VARCHAR (20),
 	@Descripcion VARCHAR (150)
@@ -377,7 +379,7 @@ AS
 
 		SET NOCOUNT ON;
 
-		UPDATE Receta SET Presentacion=@Presentacion, Cantidad=@Cantidad, Descripcion=@Descripcion
+		UPDATE Receta SET Nombre= @Nombre, Presentacion=@Presentacion, Cantidad=@Cantidad, Descripcion=@Descripcion
 	END
 GO
 --------------------------------------------------------------------------------------------------------------------------
@@ -399,45 +401,52 @@ AS
 
 	END
 GO
+
+
+
+
+
+
+
 -----------------------------------------------------------------------------------------------------------------
 
 --Se crea el procedimiento almacenado para el Respaldo
-CREATE PROCEDURE RespaldoBD_GER
-	AS
-		BEGIN
-			SET NOCOUNT ON;
+--CREATE PROCEDURE RespaldoBD_GER
+--	AS
+--		BEGIN
+--			SET NOCOUNT ON;
 
-			BACKUP DATABASE FRESHDENT
-			TO DISK = N'C:\Users\Elkin Maltez\Documents\Ingenieria en Sistema\2020\I Semestre\Programación de Base de Datos\Proyecto' ---Directorio donde se guardará el respaldo de la base de datos
-			WITH CHECKSUM;
-		END
-	GO
+--			BACKUP DATABASE FRESHDENT
+--			TO DISK = N'C:\Users\Elkin Maltez\Documents\Ingenieria en Sistema\2020\I Semestre\Programación de Base de Datos\Proyecto' ---Directorio donde se guardará el respaldo de la base de datos
+--			WITH CHECKSUM;
+--		END
+--	GO
 
 	
-CREATE TABLE Users(																		--Creación de la tabla Usuarios.
-UserID INT IDENTITY (1,1) PRIMARY KEY,													--Almacena código de usuario.
-LoginName NVARCHAR (100) UNIQUE NOT NULL,												--Almacena nombre de usuario.
-Password NVARCHAR (100) NOT NULL														--Almacena contraseña de usuario.
-);
+--CREATE TABLE Users(																		--Creación de la tabla Usuarios.
+--UserID INT IDENTITY (1,1) PRIMARY KEY,													--Almacena código de usuario.
+--LoginName NVARCHAR (100) UNIQUE NOT NULL,												--Almacena nombre de usuario.
+--Password NVARCHAR (100) NOT NULL														--Almacena contraseña de usuario.
+--);
 
-------------Inserción de datos------------------
-insert into Users values ('doctor','0987654321')										--Datos ingresado que no tendrá cambio                                 
-insert into Users values ('admin','1234567890')											--Datos ingresado que no tendrá cambio
---Procedimiento almacenado para la tabla users
-CREATE PROCEDURE Us
-	@b INT, @UserID int ,@LoginName nvarchar (100), @Password nvarchar (100)
-	-----------Atributo que tiene el procedimiento almacenado---------------
-	AS
-		BEGIN
-			SET NOCOUNT ON;
+--------------Inserción de datos------------------
+--insert into Users values ('doctor','0987654321')										--Datos ingresado que no tendrá cambio                                 
+--insert into Users values ('admin','1234567890')											--Datos ingresado que no tendrá cambio
+----Procedimiento almacenado para la tabla users
+--CREATE PROCEDURE Us
+--	@b INT, @UserID int ,@LoginName nvarchar (100), @Password nvarchar (100)
+--	-----------Atributo que tiene el procedimiento almacenado---------------
+--	AS
+--		BEGIN
+--			SET NOCOUNT ON;
 			
-			IF @b=1
-				INSERT INTO Users VALUES (@LoginName,@Password); --Guarda la información insertada.
-			IF @b=2
-				SELECT * FROM Users--Muestra toda la información guardada.
-			IF @b=3
-				UPDATE Users SET LoginName=@LoginName, Password=@Password WHERE UserID = @UserID; --Actualiza la información seleccionada por el número de registro asignado.
-			IF @b=4
-				SELECT * FROM Users WHERE LoginName = @LoginName and [Password] = @Password --Inicia sesión el usuario
-		END
-	GO
+--			IF @b=1
+--				INSERT INTO Users VALUES (@LoginName,@Password); --Guarda la información insertada.
+--			IF @b=2
+--				SELECT * FROM Users--Muestra toda la información guardada.
+--			IF @b=3
+--				UPDATE Users SET LoginName=@LoginName, Password=@Password WHERE UserID = @UserID; --Actualiza la información seleccionada por el número de registro asignado.
+--			IF @b=4
+--				SELECT * FROM Users WHERE LoginName = @LoginName and [Password] = @Password --Inicia sesión el usuario
+--		END
+--	GO

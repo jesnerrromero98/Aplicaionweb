@@ -48,7 +48,7 @@ namespace freshdent.Controllers
 
         //DELETE api/<MedicoController>/5
         [HttpDelete("{Id}")]
-        public void Delete(int id)
+        public void MedicoDelete(int id)
         {
             if (id != 0) _oMedicoService.MedicoDelete(id);
         }

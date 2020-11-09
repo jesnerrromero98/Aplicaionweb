@@ -50,7 +50,7 @@ namespace freshdent.Controllers
 
         //DELETE api/<RecetaController>/5
         [HttpDelete("{Id}")]
-        public void Delete (int id)
+        public void RecetaDelete (int id)
         {
             if (id != 0) _oRecetaService.RecetaDelete(id);
         }

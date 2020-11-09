@@ -10,8 +10,8 @@ namespace freshdent.Iservices
     {
         Consulta ConsultaAdd(Consulta oConsulta);
         List<Consulta> ConsultaGets();
-        Consulta ConsultaGet(int ConsultaId);
-        string ConsultaDelete(int ConsultaId);
+        Consulta ConsultaGet(int IdConsulta);
+        string ConsultaDelete(int IdConsulta);
         Consulta ConsultaUpdate(Consulta oConsulta);
     }
 }

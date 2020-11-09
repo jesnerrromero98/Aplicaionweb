@@ -39,7 +39,7 @@ namespace freshdent.Services
             return _oConsulta;
         }
 
-        public string ConsultaDelete(int ConsultaId)
+        public string ConsultaDelete(int IdConsulta)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdConsulta", ConsultaId);
+                        param.Add("@IdConsulta", IdConsulta);
                         con.Query("DeleteConsulta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
@@ -60,7 +60,7 @@ namespace freshdent.Services
             }
             return _oConsulta.Error;
         }
-        public Consulta ConsultaGet(int ConsultaId)
+        public Consulta ConsultaGet(int IdConsulta)
         {
             _oConsulta = new Consulta();
             try
@@ -71,8 +71,9 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdConsulta", ConsultaId);
-                        var oConsulta = con.Query<Consulta>("SelectConsulta", param, commandType: CommandType.StoredProcedure).ToList();
+                        param.Add("@IdConsulta", IdConsulta);
+                        var oConsulta = con.Query<Consulta>("SelectConsulta", param, commandType: 
+                            CommandType.StoredProcedure).ToList();
                         if (oConsulta != null && oConsulta.Count() > 0)
                         {
                             _oConsulta = oConsulta.SingleOrDefault();

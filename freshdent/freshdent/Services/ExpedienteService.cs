@@ -39,7 +39,7 @@ namespace freshdent.Services
             return _oExpediente;
         }
         
-        public string ExpedienteDelete (int ExpedienteId)
+        public string ExpedienteDelete (int IdExpediente)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdExpediente", ExpedienteId);
+                        param.Add("@IdExpediente", IdExpediente);
                         con.Query("DeleteExpediente", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
@@ -60,7 +60,7 @@ namespace freshdent.Services
             }
             return _oExpediente.Error;
         }
-        public Expediente ExpedienteGet(int ExpedienteId)
+        public Expediente ExpedienteGet(int IdExpediente)
         {
             _oExpediente = new Expediente();
             try
@@ -71,8 +71,9 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdExpediente", ExpedienteId);
-                        var oExpediente = con.Query<Expediente>("SelectExpediente", param, commandType: CommandType.StoredProcedure).ToList();
+                        param.Add("@IdExpediente", IdExpediente);
+                        var oExpediente = con.Query<Expediente>("SelectExpediente", param, commandType: 
+                            CommandType.StoredProcedure).ToList();
                         if (oExpediente != null && oExpediente.Count()>0)
                         {
                             _oExpediente = oExpediente.SingleOrDefault();
@@ -96,7 +97,8 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oExpedientes = con.Query<Expediente>("SelectExpedienteAll", commandType: CommandType.StoredProcedure).ToList();
+                        var oExpedientes = con.Query<Expediente>("SelectExpedienteAll", commandType: 
+                            CommandType.StoredProcedure).ToList();
                         if (oExpedientes != null && oExpedientes.Count()>0)
                         {
                             _oExpedientes = oExpedientes;

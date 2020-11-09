@@ -39,7 +39,7 @@ namespace freshdent.Services
             return _oMedico;
         }
 
-        public string MedicoDelete(int MedicoId)
+        public string MedicoDelete(int IdMedico)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdMedico", MedicoId);
+                        param.Add("@IdMedico", IdMedico);
                         con.Query("DeleteMedico", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
@@ -60,7 +60,7 @@ namespace freshdent.Services
             }
             return _oMedico.Error;
         }
-        public Medico MedicoGet(int MedicoId)
+        public Medico MedicoGet(int IdMedico)
         {
             _oMedico = new Medico();
             try
@@ -71,8 +71,9 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdMedico", MedicoId);
-                        var oMedico = con.Query<Medico>("SelectMedico", param, commandType: CommandType.StoredProcedure).ToList();
+                        param.Add("@IdMedico", IdMedico);
+                        var oMedico = con.Query<Medico>("SelectMedico", param, commandType: 
+                            CommandType.StoredProcedure).ToList();
                         if (oMedico != null && oMedico.Count() > 0)
                         {
                             _oMedico = oMedico.SingleOrDefault();
@@ -96,7 +97,8 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oMedicos = con.Query<Medico>("SelectMedicoAll", commandType: CommandType.StoredProcedure).ToList();
+                        var oMedicos = con.Query<Medico>("SelectMedicoAll", commandType: 
+                            CommandType.StoredProcedure).ToList();
                         if (oMedicos != null && oMedicos.Count() > 0)
                         {
                             _oMedicos = oMedicos;

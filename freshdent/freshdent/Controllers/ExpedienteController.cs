@@ -49,7 +49,7 @@ namespace freshdent.Controllers
 
         //DELETE: api/<ExpedienteController>/5
         [HttpDelete("{Id}")]
-        public void Delete(int id)
+        public void ExpedienteDelete(int id)
         {
             if (id != 0) _oExpedienteService.ExpedienteDelete(id);
         }

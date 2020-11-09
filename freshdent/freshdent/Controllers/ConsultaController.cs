@@ -48,7 +48,7 @@ namespace freshdent.Controllers
 
         //DELETE api/<ConsultaController>/5
         [HttpDelete("{Id}")]
-        public void Delete(int id)
+        public void ConsultaDelete(int id)
         {
             if (id != 0) _oConsultaService.ConsultaDelete(id);
         }

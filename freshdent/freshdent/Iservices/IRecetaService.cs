@@ -10,8 +10,8 @@ namespace freshdent.Iservices
     {
         Receta RecetaAdd(Receta oReceta);
         List<Receta> RecetaGets();
-        Receta RecetaGet(int RecetaId);
-        string RecetaDelete(int RecetaId);
+        Receta RecetaGet(int IdReceta);
+        string RecetaDelete(int IdReceta);
         Receta RecetaUpdate(Receta oReceta);
     }
 }

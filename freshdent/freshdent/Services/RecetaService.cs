@@ -39,7 +39,7 @@ namespace freshdent.Services
             return _oReceta;
         }
 
-        public string RecetaDelete(int RecetaId)
+        public string RecetaDelete(int IdReceta)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdReceta", RecetaId);
+                        param.Add("@IdReceta", IdReceta);
                         con.Query("DeleteReceta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
@@ -60,7 +60,7 @@ namespace freshdent.Services
             }
             return _oReceta.Error;
         }
-        public Receta RecetaGet(int RecetaId)
+        public Receta RecetaGet(int IdReceta)
         {
             _oReceta = new Receta();
             try
@@ -71,8 +71,9 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdReceta", RecetaId);
-                        var oReceta = con.Query<Receta>("SelectReceta", param, commandType: CommandType.StoredProcedure).ToList();
+                        param.Add("@IdReceta", IdReceta);
+                        var oReceta = con.Query<Receta>("SelectReceta", param, commandType: 
+                            CommandType.StoredProcedure).ToList();
                         if (oReceta != null && oReceta.Count() > 0)
                         {
                             _oReceta = oReceta.SingleOrDefault();
@@ -96,7 +97,8 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oRecetas = con.Query<Receta>("SelectRecetaAll", commandType: CommandType.StoredProcedure).ToList();
+                        var oRecetas = con.Query<Receta>("SelectRecetaAll", commandType: 
+                            CommandType.StoredProcedure).ToList();
                         if (oRecetas != null && oRecetas.Count() > 0)
                         {
                             _oRecetas = oRecetas;
