@@ -11,7 +11,7 @@ namespace freshdent.Iservices
         Consulta ConsultaAdd(Consulta oConsulta);
         List<Consulta> ConsultaGets();
         Consulta ConsultaGet(int IdConsulta);
-        string ConsultaDelete(int IdConsulta);
+        String ConsultaDelete(int IdConsulta);
         Consulta ConsultaUpdate(Consulta oConsulta);
     }
 }

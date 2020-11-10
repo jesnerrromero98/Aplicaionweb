@@ -27,7 +27,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oMedicos = con.Query<Medico>("InsertMedico", this.setParameters(oMedico),
+                        var oMedicos = con.Query<Medico>("dbo.InsertMedico", this.setParameters(oMedico),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -50,7 +50,7 @@ namespace freshdent.Services
                         con.Open();
                         var param = new DynamicParameters();
                         param.Add("@IdMedico", IdMedico);
-                        con.Query("DeleteMedico", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                        con.Query("dbo.DeleteMedico", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
             }
@@ -72,7 +72,7 @@ namespace freshdent.Services
 
                     var param = new DynamicParameters();
                         param.Add("@IdMedico", IdMedico);
-                        var oMedico = con.Query<Medico>("SelectMedico", param, commandType: 
+                        var oMedico = con.Query<Medico>("dbo.SelectMedico", param, commandType: 
                             CommandType.StoredProcedure).ToList();
                         if (oMedico != null && oMedico.Count() > 0)
                         {
@@ -97,7 +97,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed) con.Open();   
 
 
-                        var oMedicos = con.Query<Medico>("SelectMedicoAll", commandType: 
+                        var oMedicos = con.Query<Medico>("dbo.SelectMedicoAll", commandType: 
                         CommandType.StoredProcedure).ToList();
                         if (oMedicos != null && oMedicos.Count() > 0)
                         {
@@ -121,7 +121,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oMedicos = con.Query<Medico>("UpdateMedico", this.setParameters(oMedico),
+                        var oMedicos = con.Query<Medico>("dbo.UpdateMedico", this.setParameters(oMedico),
                             commandType: CommandType.StoredProcedure);
                     }
                 }

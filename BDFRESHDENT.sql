@@ -119,6 +119,7 @@ AS
 GO
 -----------------------------------------------------------------------------------------
 CREATE PROCEDURE UpdateExpediente -- actualiza los dato de expediente
+	@IdExpediente INT,
 	@Cedula VARCHAR (100),
 	@Nombres VARCHAR (50),
 	@Apellidos VARCHAR (80),
@@ -132,7 +133,7 @@ AS
 		SET NOCOUNT ON;
 
 		UPDATE Expediente SET Cedula=@Cedula, Nombres=@Nombres, Apellidos=@Apellidos, 
-		Fecha_Nacimiento=@Fecha_Nacimiento, Telefono_Celular=@Telefono_Celular, Municipio=@Municipio,Departamento=@Departamento
+		Fecha_Nacimiento=@Fecha_Nacimiento, Telefono_Celular=@Telefono_Celular, Municipio=@Municipio,Departamento=@Departamento WHERE IdExpediente = @IdExpediente
 	END
 GO
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -199,6 +200,7 @@ AS
 GO
 -------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE UpdateMedico -- actualiza los dato
+	@IdMedico INT,
 	@Nombre_Medico VARCHAR (30),
 	@Telefono_Celular VARCHAR(20)
 AS
@@ -206,7 +208,7 @@ AS
 
 		SET NOCOUNT ON;
 
-		UPDATE Medico SET Nombre_Medico = @Nombre_Medico, Telefono_Celular = @Telefono_Celular
+		UPDATE Medico SET Nombre_Medico = @Nombre_Medico, Telefono_Celular = @Telefono_Celular WHERE IdMedico = @IdMedico
 	END
 GO
 -------------------------------------------------------------------------------------------------------------
@@ -282,6 +284,7 @@ AS
 GO
 -----------------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE UpdateConsulta -- actualiza los dato
+	@IdConsulta INT,
 	@Fecha VARCHAR(10),
 	@Hora VARCHAR(10),
 	@Sintoma VARCHAR(250),
@@ -294,7 +297,7 @@ AS
 		SET NOCOUNT ON;
 
 		UPDATE Consulta SET Fecha=@Fecha, Hora=@Hora, Sintoma=@Sintoma, Diagnostico=@Diagnostico, 
-		Nombres_Paciente = @Nombres_Paciente, NombreMedico = @NombreMedico
+		Nombres_Paciente = @Nombres_Paciente, NombreMedico = @NombreMedico WHERE IdConsulta = @IdConsulta
 	END
 GO
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -370,6 +373,7 @@ AS
 GO
 ------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE UpdateReceta -- actualiza los dato
+	@IdReceta INT,
 	@Nombre VARCHAR (50),
 	@Presentacion VARCHAR (100),	
 	@Cantidad VARCHAR (20),
@@ -379,7 +383,7 @@ AS
 
 		SET NOCOUNT ON;
 
-		UPDATE Receta SET Nombre= @Nombre, Presentacion=@Presentacion, Cantidad=@Cantidad, Descripcion=@Descripcion
+		UPDATE Receta SET Nombre= @Nombre, Presentacion=@Presentacion, Cantidad=@Cantidad, Descripcion=@Descripcion WHERE IdReceta = @IdReceta
 	END
 GO
 --------------------------------------------------------------------------------------------------------------------------

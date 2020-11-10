@@ -27,10 +27,10 @@ namespace freshdent.Controllers
         }
 
         //GET: api/<ExpedienteController>/5
-        [HttpGet("{Id}", Name = "ExpedienteGet")]
-        public Expediente ExpedienteGet(int id)
+        [HttpGet("{IdExpediente}", Name = "ExpedienteGet")]
+        public Expediente ExpedienteGet(int IdExpediente)
         {
-            return _oExpedienteService.ExpedienteGet(id);
+            return _oExpedienteService.ExpedienteGet(IdExpediente);
         }
 
         //POST: api/<ExpedienteController>
@@ -48,10 +48,10 @@ namespace freshdent.Controllers
         }
 
         //DELETE: api/<ExpedienteController>/5
-        [HttpDelete("{Id}")]
-        public void ExpedienteDelete(int id)
+        [HttpDelete("{IdExpediente}")]
+        public void ExpedienteDelete(int IdExpediente)
         {
-            if (id != 0) _oExpedienteService.ExpedienteDelete(id);
+            if (IdExpediente != 0) _oExpedienteService.ExpedienteDelete(IdExpediente);
         }
     }
 }

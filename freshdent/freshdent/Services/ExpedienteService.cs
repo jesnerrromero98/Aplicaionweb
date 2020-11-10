@@ -27,7 +27,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oExpedientes = con.Query<Expediente>("InsertExpediente", this.setParameters(oExpediente),
+                        var oExpedientes = con.Query<Expediente>("dbo.InsertExpediente", this.setParameters(oExpediente),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -50,7 +50,7 @@ namespace freshdent.Services
                         con.Open();
                         var param = new DynamicParameters();
                         param.Add("@IdExpediente", IdExpediente);
-                        con.Query("DeleteExpediente", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                        con.Query("dbo.DeleteExpediente", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
             }
@@ -72,7 +72,7 @@ namespace freshdent.Services
                         con.Open();
                         var param = new DynamicParameters();
                         param.Add("@IdExpediente", IdExpediente);
-                        var oExpediente = con.Query<Expediente>("SelectExpediente", param, commandType: 
+                        var oExpediente = con.Query<Expediente>("dbo.SelectExpediente", param, commandType: 
                             CommandType.StoredProcedure).ToList();
                         if (oExpediente != null && oExpediente.Count()>0)
                         {
@@ -97,7 +97,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oExpedientes = con.Query<Expediente>("SelectExpedienteAll", commandType: 
+                        var oExpedientes = con.Query<Expediente>("dbo.SelectExpedienteAll", commandType: 
                             CommandType.StoredProcedure).ToList();
                         if (oExpedientes != null && oExpedientes.Count()>0)
                         {
@@ -122,7 +122,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oExpedientes = con.Query<Expediente>("UpdateExpediente", this.setParameters(oExpediente),
+                        var oExpedientes = con.Query<Expediente>("dbo.UpdateExpediente", this.setParameters(oExpediente),
                             commandType: CommandType.StoredProcedure);
                     }
                 }

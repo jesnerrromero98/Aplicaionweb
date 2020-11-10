@@ -27,7 +27,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oRecetas = con.Query<Receta>("InsertReceta", this.setParameters(oReceta),
+                        var oRecetas = con.Query<Receta>("dbo.InsertReceta", this.setParameters(oReceta),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -50,7 +50,7 @@ namespace freshdent.Services
                         con.Open();
                         var param = new DynamicParameters();
                         param.Add("@IdReceta", IdReceta);
-                        con.Query("DeleteReceta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                        con.Query("dbo.DeleteReceta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
             }
@@ -72,7 +72,7 @@ namespace freshdent.Services
                         con.Open();
                         var param = new DynamicParameters();
                         param.Add("@IdReceta", IdReceta);
-                        var oReceta = con.Query<Receta>("SelectReceta", param, commandType: 
+                        var oReceta = con.Query<Receta>("dbo.SelectReceta", param, commandType: 
                             CommandType.StoredProcedure).ToList();
                         if (oReceta != null && oReceta.Count() > 0)
                         {
@@ -97,7 +97,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oRecetas = con.Query<Receta>("SelectRecetaAll", commandType: 
+                        var oRecetas = con.Query<Receta>("dbo.SelectRecetaAll", commandType: 
                             CommandType.StoredProcedure).ToList();
                         if (oRecetas != null && oRecetas.Count() > 0)
                         {
@@ -122,7 +122,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oRecetas = con.Query<Expediente>("UpdateReceta", this.setParameters(oReceta),
+                        var oRecetas = con.Query<Expediente>("dbo.UpdateReceta", this.setParameters(oReceta),
                             commandType: CommandType.StoredProcedure);
                     }
                 }

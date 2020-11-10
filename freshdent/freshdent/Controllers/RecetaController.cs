@@ -28,10 +28,10 @@ namespace freshdent.Controllers
         }
 
         //GET: api/<RecetaController>/5
-        [HttpGet("{Id}", Name ="RecetaGet")]
-        public Receta RecetaGet (int id)
+        [HttpGet("{IdReceta}", Name ="RecetaGet")]
+        public Receta RecetaGet (int IdReceta)
         {
-            return _oRecetaService.RecetaGet(id);
+            return _oRecetaService.RecetaGet(IdReceta);
         }
 
         //POST: api/<RecetaController>
@@ -49,10 +49,10 @@ namespace freshdent.Controllers
         }
 
         //DELETE api/<RecetaController>/5
-        [HttpDelete("{Id}")]
-        public void RecetaDelete (int id)
+        [HttpDelete("{IdReceta}")]
+        public void RecetaDelete (int IdReceta)
         {
-            if (id != 0) _oRecetaService.RecetaDelete(id);
+            if (IdReceta != 0) _oRecetaService.RecetaDelete(IdReceta);
         }
     }
 }

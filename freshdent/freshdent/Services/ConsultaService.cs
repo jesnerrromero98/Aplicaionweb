@@ -27,7 +27,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("InsertConsulta", this.setParameters(oConsulta),
+                        var oConsultas = con.Query<Consulta>("dbo.InsertConsulta", this.setParameters(oConsulta),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -50,7 +50,7 @@ namespace freshdent.Services
                         con.Open();
                         var param = new DynamicParameters();
                         param.Add("@IdConsulta", IdConsulta);
-                        con.Query("DeleteConsulta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                        con.Query("dbo.DeleteConsulta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
             }
@@ -72,7 +72,7 @@ namespace freshdent.Services
                         con.Open();
                         var param = new DynamicParameters();
                         param.Add("@IdConsulta", IdConsulta);
-                        var oConsulta = con.Query<Consulta>("SelectConsulta", param, commandType: 
+                        var oConsulta = con.Query<Consulta>("dbo.SelectConsulta", param, commandType: 
                             CommandType.StoredProcedure).ToList();
                         if (oConsulta != null && oConsulta.Count() > 0)
                         {
@@ -97,7 +97,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("SelectConsultaAll", commandType: CommandType.StoredProcedure).ToList();
+                        var oConsultas = con.Query<Consulta>("dbo.SelectConsultaAll", commandType: CommandType.StoredProcedure).ToList();
                         if (oConsultas != null && oConsultas.Count() > 0)
                         {
                             _oConsultas = oConsultas;
@@ -121,7 +121,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("UpdateConsulta", this.setParameters(oConsulta),
+                        var oConsultas = con.Query<Consulta>("dbo.UpdateConsulta", this.setParameters(oConsulta),
                             commandType: CommandType.StoredProcedure);
                     }
                 }

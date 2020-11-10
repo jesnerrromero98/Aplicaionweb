@@ -26,10 +26,10 @@ namespace freshdent.Controllers
         }
 
         //GET: api/<ConsultaController>/5
-        [HttpGet("{Id}", Name = "ConsultaGet")]
-        public Consulta ConsultaGet(int id)
+        [HttpGet("{IdConsulta}", Name = "ConsultaGet")]
+        public Consulta ConsultaGet(int IdConsulta)
         {
-            return _oConsultaService.ConsultaGet(id);
+            return _oConsultaService.ConsultaGet(IdConsulta);
         }
 
         //POST: api/<ConsultaController>
@@ -47,10 +47,10 @@ namespace freshdent.Controllers
         }
 
         //DELETE api/<ConsultaController>/5
-        [HttpDelete("{Id}")]
-        public void ConsultaDelete(int id)
+        [HttpDelete("{IdConsulta}")]
+        public void ConsultaDelete(int IdConsulta)
         {
-            if (id != 0) _oConsultaService.ConsultaDelete(id);
+            if (IdConsulta != 0) _oConsultaService.ConsultaDelete(IdConsulta);
         }
     }
 }

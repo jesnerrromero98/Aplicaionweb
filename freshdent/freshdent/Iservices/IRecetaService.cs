@@ -11,7 +11,7 @@ namespace freshdent.Iservices
         Receta RecetaAdd(Receta oReceta);
         List<Receta> RecetaGets();
         Receta RecetaGet(int IdReceta);
-        string RecetaDelete(int IdReceta);
+        String RecetaDelete(int IdReceta);
         Receta RecetaUpdate(Receta oReceta);
     }
 }

@@ -11,7 +11,7 @@ namespace freshdent.Iservices
         Medico MedicoAdd(Medico oMedico);
         List<Medico> MedicoGets();
         Medico MedicoGet(int IdMedico);
-        string MedicoDelete(int IdMedico);
+        String MedicoDelete(int IdMedico);
         Medico MedicoUpdate(Medico oMedico);
     }
 }

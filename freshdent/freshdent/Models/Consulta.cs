@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace freshdent.Models
 {
-    public class Consulta
+    public partial class Consulta
     {
         public int IdConsulta { get; set; }
         public string Fecha { get; set; }
