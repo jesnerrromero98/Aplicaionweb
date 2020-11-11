@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "P5Q/a9gt1xHmNQJ96zRbApLyCBCpeNnBlB+C+BaH339UaVgu+N64EfanFxurt6bRTpUwLwKzAOmMlVsx5LzuwA==",
+  "dgSpecHash": "I754Mt3qv1NSxhhG99Q+u6nk0GRU6+1zgcvLKSyHZiDkbHMmik7hgrkkAIJLyyFRiNl03p/g99YJWzlgUmDXMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
+  "projectFilePath": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\Estudios\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Elkin Maltez\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\Elkin Maltez\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Elkin Maltez\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Elkin Maltez\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\Elkin Maltez\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Elkin Maltez\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
