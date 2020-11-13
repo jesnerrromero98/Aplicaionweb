@@ -23,6 +23,8 @@ namespace freshdent
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+
         }
 
         public IConfiguration Configuration { get; }
@@ -33,7 +35,7 @@ namespace freshdent
             services.AddControllers();
 
             services.AddSingleton<IConfiguration>(Configuration);
-            Global.ConnectionString = Configuration.GetConnectionString("FRESHDENT");
+            Global.ConnectionString = Environment.GetEnvironmentVariable("DB_SERVER");
 
             services.AddScoped<IExpedienteService, ExpedienteService>();
             services.AddScoped<IRecetaService, RecetaService>();
@@ -49,6 +51,8 @@ namespace freshdent
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
+
             app.UseCors(x => x
             .AllowAnyMethod()
             .AllowAnyHeader()
