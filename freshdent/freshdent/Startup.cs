@@ -35,7 +35,9 @@ namespace freshdent
             services.AddControllers();
 
             services.AddSingleton<IConfiguration>(Configuration);
-            Global.ConnectionString = Environment.GetEnvironmentVariable("DB_SERVER");
+            Global.ConnectionString = Environment.GetEnvironmentVariable("DB_SERVER").ToString();
+
+            Console.WriteLine(Global.ConnectionString);
 
             services.AddScoped<IExpedienteService, ExpedienteService>();
             services.AddScoped<IRecetaService, RecetaService>();
