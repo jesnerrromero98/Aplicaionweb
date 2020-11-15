@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace freshdent.Services
 {
-    public class EspecialidadService
+    public class EspecialidadService: IEspecialidadService
     {
         Especialidad _oEspecialidad = new Especialidad();
         List<Especialidad> _oEspecialidads = new List<Especialidad>();

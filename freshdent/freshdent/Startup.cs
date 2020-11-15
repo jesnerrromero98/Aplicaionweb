@@ -1,20 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+
 using freshdent.Conexion;
 using freshdent.Iservices;
 using freshdent.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Swashbuckle.AspNetCore.Swagger;
+
 
 namespace freshdent
 {
@@ -35,14 +29,14 @@ namespace freshdent
             services.AddControllers();
 
             services.AddSingleton<IConfiguration>(Configuration);
-            Global.ConnectionString = Configuration.GetConnectionString("FRESHDENT");
+            Global.ConnectionString = Configuration.GetConnectionString("hola");
 
             services.AddScoped<IExpedienteService, ExpedienteService>();
             services.AddScoped<IRecetaService, RecetaService>();
             services.AddScoped<IMedicoService, MedicoService>();
             services.AddScoped<IConsultaService, ConsultaService>();
-            //services.AddScoped<IEspecialidadService, EspecialidadService>();
-            //services.AddScoped<ICitaService, CitaService>();
+            services.AddScoped<IEspecialidadService, EspecialidadService>();
+            services.AddScoped<ICitaService,CitaService>();
 
             services.AddSwaggerGen(c =>
             {

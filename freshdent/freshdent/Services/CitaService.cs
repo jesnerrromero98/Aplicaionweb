@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using freshdent.Conexion;
+using freshdent.Iservices;
 using freshdent.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace freshdent.Services
 {
-    public class CitaService
+    public class CitaService : ICitaService
     {
         Cita _oCita = new Cita();
         List<Cita> _oCitas = new List<Cita>();

@@ -12,6 +12,6 @@ namespace freshdent.Iservices
         List<Especialidad> EspecialidadGets();
         Especialidad EspecialidadGet(int IdEspecialidad);
         String EspecialidadDelete(int IdEspecialidad);
-        Consulta EspecialidadUpdate(Especialidad oEspecialidad);
+        Especialidad EspecialidadUpdate(Especialidad oEspecialidad);
     }
 }
