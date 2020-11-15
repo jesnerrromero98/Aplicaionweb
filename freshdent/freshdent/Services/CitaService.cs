@@ -1,10 +1,8 @@
 ﻿using Dapper;
 using freshdent.Conexion;
-using freshdent.Iservices;
 using freshdent.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace freshdent.Services
 {
-    public class ConsultaService : IConsultaService
+    public class CitaService
     {
-        Consulta _oConsulta = new Consulta();
-        List<Consulta> _oConsultas = new List<Consulta>();
+        Cita _oCita = new Cita();
+        List<Cita> _oCitas = new List<Cita>();
 
-        public Consulta ConsultaAdd(Consulta oConsulta)
+        public Cita CitaAdd(Cita oCita)
         {
-            _oConsulta = new Consulta();
+            _oCita = new Cita();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -27,19 +25,19 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("dbo.InsertConsulta", this.setParameters(oConsulta),
+                        var oCitas = con.Query<Cita>("dbo.InsertCita", this.setParameters(oCita),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oCita.Error = ex.Message;
             }
-            return _oConsulta;
+            return _oCita;
         }
 
-        public string ConsultaDelete(int IdConsulta)
+        public string CitaDelete(int IdCita)
         {
             try
             {
@@ -49,20 +47,20 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdConsulta", IdConsulta);
-                        con.Query("dbo.DeleteConsulta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                        param.Add("@IdCita", IdCita);
+                        con.Query("dbo.DeleteCita", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oCita.Error = ex.Message;
             }
-            return _oConsulta.Error;
+            return _oCita.Error;
         }
-        public Consulta ConsultaGet(int IdConsulta)
+        public Cita CitaGet(int IdCita)
         {
-            _oConsulta = new Consulta();
+            _oCita = new Cita();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -71,25 +69,25 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdConsulta", IdConsulta);
-                        var oConsulta = con.Query<Consulta>("dbo.SelectConsulta", param, commandType: 
+                        param.Add("@IdCita", IdCita);
+                        var oCita = con.Query<Cita>("dbo.SelectCita", param, commandType:
                             CommandType.StoredProcedure).ToList();
-                        if (oConsulta != null && oConsulta.Count() > 0)
+                        if (oCita != null && oCita.Count() > 0)
                         {
-                            _oConsulta = oConsulta.SingleOrDefault();
+                            _oCita = oCita.SingleOrDefault();
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oCita.Error = ex.Message;
             }
-            return _oConsulta;
+            return _oCita;
         }
-        public List<Consulta> ConsultaGets()
+        public List<Cita> CitaGets()
         {
-            _oConsultas = new List<Consulta>();
+            _oCitas = new List<Cita>();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -97,23 +95,23 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("dbo.SelectConsultaAll", commandType: CommandType.StoredProcedure).ToList();
-                        if (oConsultas != null && oConsultas.Count() > 0)
+                        var oCitas = con.Query<Cita>("dbo.SelectCitaAll", commandType: CommandType.StoredProcedure).ToList();
+                        if (oCitas != null && oCitas.Count() > 0)
                         {
-                            _oConsultas = oConsultas;
+                            _oCitas = oCitas;
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oCita.Error = ex.Message;
             }
-            return _oConsultas;
+            return _oCitas;
         }
-        public Consulta ConsultaUpdate(Consulta oConsulta)
+        public Cita CitaUpdate(Cita oCita)
         {
-            _oConsulta = new Consulta();
+            _oCita = new Cita();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -121,27 +119,27 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("dbo.UpdateConsulta", this.setParameters(oConsulta),
+                        var oCitas = con.Query<Cita>("dbo.UpdateCita", this.setParameters(oCita),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oCita.Error = ex.Message;
             }
-            return _oConsulta;
+            return _oCita;
         }
-        private DynamicParameters setParameters(Consulta oConsulta)
+        private DynamicParameters setParameters(Cita oCita)
         {
             DynamicParameters parameters = new DynamicParameters();
-            if (oConsulta.IdConsulta != 0) parameters.Add("@IdConsulta", oConsulta.IdConsulta);
-            parameters.Add("@Fecha", oConsulta.Fecha);
-            parameters.Add("@Hora", oConsulta.Hora);
-            parameters.Add("@Sintoma", oConsulta.Sintoma);
-            parameters.Add("@Diagnostico", oConsulta.Diagnostico);
-            parameters.Add("@IdExpediente", oConsulta.IdExpediente);
-            parameters.Add("@IdMedico", oConsulta.IdMedico);
+            if (oCita.IdCita != 0) parameters.Add("@IdCita", oCita.IdCita);
+            parameters.Add("@FechaCita", oCita.FechaCita);
+            parameters.Add("@HoraDisponible", oCita.HoraDisponible);
+            parameters.Add("@Precio", oCita.Precio);
+            parameters.Add("@Tipo", oCita.Tipo);
+            parameters.Add("@IdExpediente", oCita.IdExpediente);
+            parameters.Add("@IdMedico", oCita.IdMedico);
             return parameters;
         }
     }

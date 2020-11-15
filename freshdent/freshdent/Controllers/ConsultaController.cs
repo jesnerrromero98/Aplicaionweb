@@ -39,7 +39,7 @@ namespace freshdent.Controllers
             if (ModelState.IsValid) _oConsultaService.ConsultaAdd(oConsulta);
         }
 
-        //PUT: api/<MedicoController>/5
+        //PUT: api/<ConsultaController>/5
         [HttpPut]
         public void Put([FromBody] Consulta oConsulta)
         {

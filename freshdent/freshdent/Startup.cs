@@ -35,14 +35,14 @@ namespace freshdent
             services.AddControllers();
 
             services.AddSingleton<IConfiguration>(Configuration);
-            Global.ConnectionString = Environment.GetEnvironmentVariable("DB_SERVER").ToString();
-
-            Console.WriteLine(Global.ConnectionString);
+            Global.ConnectionString = Configuration.GetConnectionString("FRESHDENT");
 
             services.AddScoped<IExpedienteService, ExpedienteService>();
             services.AddScoped<IRecetaService, RecetaService>();
             services.AddScoped<IMedicoService, MedicoService>();
             services.AddScoped<IConsultaService, ConsultaService>();
+            //services.AddScoped<IEspecialidadService, EspecialidadService>();
+            //services.AddScoped<ICitaService, CitaService>();
 
             services.AddSwaggerGen(c =>
             {

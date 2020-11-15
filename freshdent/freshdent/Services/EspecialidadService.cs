@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace freshdent.Services
 {
-    public class ConsultaService : IConsultaService
+    public class EspecialidadService
     {
-        Consulta _oConsulta = new Consulta();
-        List<Consulta> _oConsultas = new List<Consulta>();
+        Especialidad _oEspecialidad = new Especialidad();
+        List<Especialidad> _oEspecialidads = new List<Especialidad>();
 
-        public Consulta ConsultaAdd(Consulta oConsulta)
+        public Especialidad EspecialidadAdd(Especialidad oEspecialidad)
         {
-            _oConsulta = new Consulta();
+            _oEspecialidad = new Especialidad();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -27,19 +27,19 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("dbo.InsertConsulta", this.setParameters(oConsulta),
+                        var oConsultas = con.Query<Especialidad>("dbo.InsertEspecialidad", this.setParameters(oEspecialidad),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oEspecialidad.Error = ex.Message;
             }
-            return _oConsulta;
+            return _oEspecialidad;
         }
 
-        public string ConsultaDelete(int IdConsulta)
+        public string EspecialidadDelete(int IdEspecialidad)
         {
             try
             {
@@ -49,20 +49,20 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdConsulta", IdConsulta);
-                        con.Query("dbo.DeleteConsulta", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                        param.Add("@IdEspecialidad", IdEspecialidad);
+                        con.Query("dbo.DeleteEspecialidad", param, commandType: CommandType.StoredProcedure).SingleOrDefault();
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oEspecialidad.Error = ex.Message;
             }
-            return _oConsulta.Error;
+            return _oEspecialidad.Error;
         }
-        public Consulta ConsultaGet(int IdConsulta)
+        public Especialidad EspecialidadGet(int IdEspecialidad)
         {
-            _oConsulta = new Consulta();
+            _oEspecialidad = new Especialidad();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -71,25 +71,25 @@ namespace freshdent.Services
                     {
                         con.Open();
                         var param = new DynamicParameters();
-                        param.Add("@IdConsulta", IdConsulta);
-                        var oConsulta = con.Query<Consulta>("dbo.SelectConsulta", param, commandType: 
+                        param.Add("@IdEspecialidad", IdEspecialidad);
+                        var oEspecialidad = con.Query<Especialidad>("dbo.SelectEspecialidad", param, commandType:
                             CommandType.StoredProcedure).ToList();
-                        if (oConsulta != null && oConsulta.Count() > 0)
+                        if (oEspecialidad != null && oEspecialidad.Count() > 0)
                         {
-                            _oConsulta = oConsulta.SingleOrDefault();
+                            _oEspecialidad = oEspecialidad.SingleOrDefault();
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oEspecialidad.Error = ex.Message;
             }
-            return _oConsulta;
+            return _oEspecialidad;
         }
-        public List<Consulta> ConsultaGets()
+        public List<Especialidad> EspecialidadGets()
         {
-            _oConsultas = new List<Consulta>();
+            _oEspecialidads = new List<Especialidad>();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -97,23 +97,23 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("dbo.SelectConsultaAll", commandType: CommandType.StoredProcedure).ToList();
-                        if (oConsultas != null && oConsultas.Count() > 0)
+                        var oEspecialidads = con.Query<Especialidad>("dbo.SelectEspecialidadAll", commandType: CommandType.StoredProcedure).ToList();
+                        if (oEspecialidads != null && oEspecialidads.Count() > 0)
                         {
-                            _oConsultas = oConsultas;
+                            _oEspecialidads = oEspecialidads;
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oEspecialidad.Error = ex.Message;
             }
-            return _oConsultas;
+            return _oEspecialidads;
         }
-        public Consulta ConsultaUpdate(Consulta oConsulta)
+        public Especialidad EspecialidadUpdate(Especialidad oEspecialidad)
         {
-            _oConsulta = new Consulta();
+            _oEspecialidad = new Especialidad();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -121,27 +121,23 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("dbo.UpdateConsulta", this.setParameters(oConsulta),
+                        var oEspecialidads = con.Query<Especialidad>("dbo.UpdateEspecialidad", this.setParameters(oEspecialidad),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _oConsulta.Error = ex.Message;
+                _oEspecialidad.Error = ex.Message;
             }
-            return _oConsulta;
+            return _oEspecialidad;
         }
-        private DynamicParameters setParameters(Consulta oConsulta)
+        private DynamicParameters setParameters(Especialidad oEspecialidad)
         {
             DynamicParameters parameters = new DynamicParameters();
-            if (oConsulta.IdConsulta != 0) parameters.Add("@IdConsulta", oConsulta.IdConsulta);
-            parameters.Add("@Fecha", oConsulta.Fecha);
-            parameters.Add("@Hora", oConsulta.Hora);
-            parameters.Add("@Sintoma", oConsulta.Sintoma);
-            parameters.Add("@Diagnostico", oConsulta.Diagnostico);
-            parameters.Add("@IdExpediente", oConsulta.IdExpediente);
-            parameters.Add("@IdMedico", oConsulta.IdMedico);
+            if (oEspecialidad.IdEspecialidad != 0) parameters.Add("@IdEspecialidad", oEspecialidad.IdEspecialidad);
+            parameters.Add("@NombreEspecialidad", oEspecialidad.NombreEspecialidad);
+            parameters.Add("@DescpEspecialidad", oEspecialidad.DescpEspecialidad);
             return parameters;
         }
     }
