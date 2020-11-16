@@ -1,14 +1,12 @@
-
 using freshdent.Conexion;
 using freshdent.Iservices;
 using freshdent.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace freshdent
 {
@@ -29,7 +27,7 @@ namespace freshdent
             services.AddControllers();
 
             services.AddSingleton<IConfiguration>(Configuration);
-            Global.ConnectionString = Configuration.GetConnectionString("hola");
+            Global.ConnectionString = Configuration.GetConnectionString("FRESHDENT");
 
             services.AddScoped<IExpedienteService, ExpedienteService>();
             services.AddScoped<IRecetaService, RecetaService>();

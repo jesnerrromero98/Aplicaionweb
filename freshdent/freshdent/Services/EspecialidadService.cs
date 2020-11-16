@@ -15,7 +15,7 @@ namespace freshdent.Services
     public class EspecialidadService: IEspecialidadService
     {
         Especialidad _oEspecialidad = new Especialidad();
-        List<Especialidad> _oEspecialidads = new List<Especialidad>();
+        List<Especialidad> _oEspecialidades = new List<Especialidad>();
 
         public Especialidad EspecialidadAdd(Especialidad oEspecialidad)
         {
@@ -27,7 +27,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Especialidad>("dbo.InsertEspecialidad", this.setParameters(oEspecialidad),
+                        var oEspecialidades = con.Query<Especialidad>("dbo.InsertEspecialidad", this.setParameters(oEspecialidad),
                             commandType: CommandType.StoredProcedure);
                     }
                 }
@@ -89,7 +89,7 @@ namespace freshdent.Services
         }
         public List<Especialidad> EspecialidadGets()
         {
-            _oEspecialidads = new List<Especialidad>();
+            _oEspecialidades = new List<Especialidad>();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -97,10 +97,10 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oEspecialidads = con.Query<Especialidad>("dbo.SelectEspecialidadAll", commandType: CommandType.StoredProcedure).ToList();
-                        if (oEspecialidads != null && oEspecialidads.Count() > 0)
+                        var oEspecialidades = con.Query<Especialidad>("dbo.SelectEspecalidadAll", commandType: CommandType.StoredProcedure).ToList();
+                        if (oEspecialidades != null && oEspecialidades.Count() > 0)
                         {
-                            _oEspecialidads = oEspecialidads;
+                            _oEspecialidades = oEspecialidades;
                         }
                     }
                 }
@@ -109,7 +109,7 @@ namespace freshdent.Services
             {
                 _oEspecialidad.Error = ex.Message;
             }
-            return _oEspecialidads;
+            return _oEspecialidades;
         }
         public Especialidad EspecialidadUpdate(Especialidad oEspecialidad)
         {

@@ -740,23 +740,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jesner romero\\.nuget\\packages\\": {},
+    "C:\\Users\\Elkin Maltez\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jesner romero\\Desktop\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
+      "projectUniqueName": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\Estudios\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
       "projectName": "freshdent",
-      "projectPath": "C:\\Users\\Jesner romero\\Desktop\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
-      "packagesPath": "C:\\Users\\Jesner romero\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jesner romero\\Desktop\\Aplicaionweb\\freshdent\\freshdent\\obj\\",
+      "projectPath": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\Estudios\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
+      "packagesPath": "C:\\Users\\Elkin Maltez\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\Estudios\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Aplicaionweb\\freshdent\\freshdent\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jesner romero\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Elkin Maltez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -764,7 +764,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
@@ -823,7 +823,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
