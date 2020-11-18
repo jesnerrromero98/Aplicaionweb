@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace freshdent
 {
@@ -27,7 +28,9 @@ namespace freshdent
             services.AddControllers();
 
             services.AddSingleton<IConfiguration>(Configuration);
-            Global.ConnectionString = Configuration.GetConnectionString("hola");
+            Global.ConnectionString = Environment.GetEnvironmentVariable("DB_SERVER").ToString();
+            
+            Console.WriteLine(Global.ConnectionString);
 
             services.AddScoped<IExpedienteService, ExpedienteService>();
             services.AddScoped<IRecetaService, RecetaService>();
