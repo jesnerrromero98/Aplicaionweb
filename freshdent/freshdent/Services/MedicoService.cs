@@ -138,6 +138,7 @@ namespace freshdent.Services
             parameters.Add("@NombreMedico", oMedico.NombreMedico);
             parameters.Add("@Telefono_Celular", oMedico.Telefono_Celular);
             parameters.Add("@IdEspecialidad", oMedico.IdEspecialidad);
+            parameters.Add("@NombreEspecialidad",oMedico.NombreEspecialidad);
             return parameters;
         }
     }

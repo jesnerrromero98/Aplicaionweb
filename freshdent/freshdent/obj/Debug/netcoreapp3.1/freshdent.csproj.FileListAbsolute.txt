@@ -194,3 +194,36 @@ C:\Users\Jesner romero\Desktop\Aplicaionweb\freshdent\freshdent\obj\Debug\netcor
 C:\Users\Jesner romero\Desktop\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.dll
 C:\Users\Jesner romero\Desktop\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.pdb
 C:\Users\Jesner romero\Desktop\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.genruntimeconfig.cache
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\appsettings.json
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\freshdent.exe
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\freshdent.deps.json
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\freshdent.runtimeconfig.json
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\freshdent.runtimeconfig.dev.json
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\freshdent.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\freshdent.pdb
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\Dapper.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.csprojAssemblyReference.cache
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.AssemblyInfoInputs.cache
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.AssemblyInfo.cs
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.csproj.CoreCompileInputs.cache
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.MvcApplicationPartsAssemblyInfo.cs
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.MvcApplicationPartsAssemblyInfo.cache
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.RazorTargetAssemblyInfo.cache
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.csproj.CopyComplete
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\staticwebassets\freshdent.StaticWebAssets.Manifest.cache
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\staticwebassets\freshdent.StaticWebAssets.xml
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.dll
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.pdb
+E:\romero98\Aplicaionweb\freshdent\freshdent\obj\Debug\netcoreapp3.1\freshdent.genruntimeconfig.cache

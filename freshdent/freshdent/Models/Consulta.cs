@@ -14,7 +14,9 @@ namespace freshdent.Models
         public string Sintoma { get; set; }
         public string Diagnostico { get; set; }
         public int IdExpediente { get; set; }
+        public string Nombres { get; set; }
         public int IdMedico { get; set; }
+        public string NombreMedico { get; set; }
         public string Error { get; set; }
     }
 }

@@ -140,7 +140,9 @@ namespace freshdent.Services
             parameters.Add("@Precio", oCita.Precio);
             parameters.Add("@Tipo", oCita.Tipo);
             parameters.Add("@IdExpediente", oCita.IdExpediente);
+            parameters.Add("@Nombres", oCita.Nombres);
             parameters.Add("@IdMedico", oCita.IdMedico);
+            parameters.Add("@NombreMedico", oCita.NombreMedico);
             return parameters;
         }
     }

@@ -27,7 +27,7 @@ namespace freshdent
             services.AddControllers();
 
             services.AddSingleton<IConfiguration>(Configuration);
-            Global.ConnectionString = Configuration.GetConnectionString("FRESHDENT");
+            Global.ConnectionString = Configuration.GetConnectionString("hola");
 
             services.AddScoped<IExpedienteService, ExpedienteService>();
             services.AddScoped<IRecetaService, RecetaService>();

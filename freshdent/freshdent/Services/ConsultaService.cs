@@ -141,7 +141,9 @@ namespace freshdent.Services
             parameters.Add("@Sintoma", oConsulta.Sintoma);
             parameters.Add("@Diagnostico", oConsulta.Diagnostico);
             parameters.Add("@IdExpediente", oConsulta.IdExpediente);
+            parameters.Add("@Nombres", oConsulta.Nombres);
             parameters.Add("@IdMedico", oConsulta.IdMedico);
+            parameters.Add("@NombreMedico", oConsulta.NombreMedico);
             return parameters;
         }
     }
