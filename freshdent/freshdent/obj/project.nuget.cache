@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vn613Ev921iRyERzIHq5jw/ibxp7PBediYws4lfkn/WCO6y+1qO0qW8VYhLWZtPf3B2fziWZUKf5uJ4uzlxpLA==",
+  "dgSpecHash": "I754Mt3qv1NSxhhG99Q+u6nk0GRU6+1zgcvLKSyHZiDkbHMmik7hgrkkAIJLyyFRiNl03p/g99YJWzlgUmDXMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
+  "projectFilePath": "C:\\Users\\Elkin Maltez\\Documents\\Ingenieria en Sistema\\Estudios\\2020\\II Semestre\\Diseño de Aplicaciones Web\\Aplicaionweb\\freshdent\\freshdent\\freshdent.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Elkin Maltez\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\Elkin Maltez\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

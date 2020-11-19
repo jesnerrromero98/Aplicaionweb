@@ -15,7 +15,7 @@ namespace freshdent.Services
     public class MedicoService : IMedicoService
     {
         Medico _oMedico = new Medico();
-        List<Medico> _oMedicos = new List<Medico>();
+        List<MedExp> _oMedicos = new List<MedExp>();
 
         public Medico MedicoAdd(Medico oMedico)
         {
@@ -87,16 +87,16 @@ namespace freshdent.Services
             }
             return _oMedico;
         }
-        public List<Medico> MedicoGets()
+        public List<MedExp> MedicoGets()
         {
-            _oMedicos = new List<Medico>();
+            _oMedicos = new List<MedExp>();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
                 {
                     if (con.State == ConnectionState.Closed) con.Open();   
 
-                        var oMedicos = con.Query<Medico>("dbo.SelectMedicoAll", commandType: 
+                        var oMedicos = con.Query<MedExp>("dbo.SelectMdicoAll", commandType: 
                         CommandType.StoredProcedure).ToList();
                         if (oMedicos != null && oMedicos.Count() > 0)
                         {
@@ -138,7 +138,6 @@ namespace freshdent.Services
             parameters.Add("@NombreMedico", oMedico.NombreMedico);
             parameters.Add("@Telefono_Celular", oMedico.Telefono_Celular);
             parameters.Add("@IdEspecialidad", oMedico.IdEspecialidad);
-            parameters.Add("@NombreEspecialidad",oMedico.NombreEspecialidad);
             return parameters;
         }
     }

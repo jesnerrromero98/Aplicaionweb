@@ -9,7 +9,7 @@ namespace freshdent.Iservices
     public interface ICitaService
     {
         Cita CitaAdd(Cita oCita);
-        List<Cita> CitaGets();
+        List<CitMedExp> CitaGets();
         Cita CitaGet(int IdCita);
         String CitaDelete(int IdCita);
         Cita CitaUpdate(Cita oCita);

@@ -9,7 +9,7 @@ namespace freshdent.Iservices
     public interface IConsultaService
     {
         Consulta ConsultaAdd(Consulta oConsulta);
-        List<Consulta> ConsultaGets();
+        List<ConsMedExp> ConsultaGets();
         Consulta ConsultaGet(int IdConsulta);
         String ConsultaDelete(int IdConsulta);
         Consulta ConsultaUpdate(Consulta oConsulta);

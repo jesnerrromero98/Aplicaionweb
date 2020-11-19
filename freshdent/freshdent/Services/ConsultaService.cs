@@ -15,7 +15,7 @@ namespace freshdent.Services
     public class ConsultaService : IConsultaService
     {
         Consulta _oConsulta = new Consulta();
-        List<Consulta> _oConsultas = new List<Consulta>();
+        List<ConsMedExp> _oConsultas = new List<ConsMedExp>();
 
         public Consulta ConsultaAdd(Consulta oConsulta)
         {
@@ -87,9 +87,9 @@ namespace freshdent.Services
             }
             return _oConsulta;
         }
-        public List<Consulta> ConsultaGets()
+        public List<ConsMedExp> ConsultaGets()
         {
-            _oConsultas = new List<Consulta>();
+            _oConsultas = new List<ConsMedExp>();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -97,7 +97,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oConsultas = con.Query<Consulta>("dbo.SelectConsultaAll", commandType: CommandType.StoredProcedure).ToList();
+                        var oConsultas = con.Query<ConsMedExp>("dbo.SelectConsultaAll", commandType: CommandType.StoredProcedure).ToList();
                         if (oConsultas != null && oConsultas.Count() > 0)
                         {
                             _oConsultas = oConsultas;
@@ -141,9 +141,7 @@ namespace freshdent.Services
             parameters.Add("@Sintoma", oConsulta.Sintoma);
             parameters.Add("@Diagnostico", oConsulta.Diagnostico);
             parameters.Add("@IdExpediente", oConsulta.IdExpediente);
-            parameters.Add("@Nombres", oConsulta.Nombres);
             parameters.Add("@IdMedico", oConsulta.IdMedico);
-            parameters.Add("@NombreMedico", oConsulta.NombreMedico);
             return parameters;
         }
     }

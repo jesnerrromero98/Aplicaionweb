@@ -20,7 +20,7 @@ namespace freshdent.Controllers
         }
         //GET: api/<CitaController>
         [HttpGet]
-        public IEnumerable<Cita> CitaGet()
+        public IEnumerable<CitMedExp> CitaGet()
         {
             return _oCitaService.CitaGets();
         }

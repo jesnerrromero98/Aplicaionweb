@@ -14,7 +14,7 @@ namespace freshdent.Services
     public class CitaService : ICitaService
     {
         Cita _oCita = new Cita();
-        List<Cita> _oCitas = new List<Cita>();
+        List<CitMedExp> _oCitas = new List<CitMedExp>();
 
         public Cita CitaAdd(Cita oCita)
         {
@@ -86,9 +86,9 @@ namespace freshdent.Services
             }
             return _oCita;
         }
-        public List<Cita> CitaGets()
+        public List<CitMedExp> CitaGets()
         {
-            _oCitas = new List<Cita>();
+            _oCitas = new List<CitMedExp>();
             try
             {
                 using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -96,7 +96,7 @@ namespace freshdent.Services
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
-                        var oCitas = con.Query<Cita>("dbo.SelectCitaAll", commandType: CommandType.StoredProcedure).ToList();
+                        var oCitas = con.Query<CitMedExp>("dbo.SelectCitaAll", commandType: CommandType.StoredProcedure).ToList();
                         if (oCitas != null && oCitas.Count() > 0)
                         {
                             _oCitas = oCitas;
@@ -140,9 +140,7 @@ namespace freshdent.Services
             parameters.Add("@Precio", oCita.Precio);
             parameters.Add("@Tipo", oCita.Tipo);
             parameters.Add("@IdExpediente", oCita.IdExpediente);
-            parameters.Add("@Nombres", oCita.Nombres);
             parameters.Add("@IdMedico", oCita.IdMedico);
-            parameters.Add("@NombreMedico", oCita.NombreMedico);
             return parameters;
         }
     }
